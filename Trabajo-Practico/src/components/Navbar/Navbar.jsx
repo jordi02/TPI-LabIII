@@ -4,25 +4,26 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/esm/Button';
 import Carrito from "../../assets/navbar/car.png"
-import { useState } from 'react';
+//import { useState } from 'react';
+import { Outlet, Link } from 'react-router-dom';
 
-//Modulos Firebase
-import appFirebase from "../../credenciales"
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-const auth = getAuth(appFirebase)
+// //Modulos Firebase
+// import appFirebase from "../../credenciales"
+// import { getAuth, onAuthStateChanged } from "firebase/auth";
+// const auth = getAuth(appFirebase)
 
 function NavBar() {
 
-  const [usuario, setUsuario] = useState(null)
+  // const [usuario, setUsuario] = useState(null)
 
-  onAuthStateChanged(auth, (usuarioFirebase) => {
+  // onAuthStateChanged(auth, (usuarioFirebase) => {
 
-    if (usuarioFirebase) {
-      setUsuario(usuarioFirebase);
-    } else {
-      setUsuario(null);
-    }
-  });
+  //   if (usuarioFirebase) {
+  //     setUsuario(usuarioFirebase);
+  //   } else {
+  //     setUsuario(null);
+  //   }
+  // });
 
 
   return (
@@ -30,7 +31,7 @@ function NavBar() {
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary fixed-top">
       <Container fluid>
         <Navbar.Brand href="#home">PUROHABITO</Navbar.Brand>
-        <Nav.Link href="#features">Sobre nosotros</Nav.Link>
+        <Nav.Link href="/us">Sobre nosotros</Nav.Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -47,12 +48,13 @@ function NavBar() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link href="#features">Contacto</Nav.Link>
+            <Nav.Link href="/contact">Contacto</Nav.Link>
           </Nav>
           <Nav>
-            <Button>REGISTRARSE</Button>
-            <Button>Iniciar sesion</Button>
+            <Button><Nav.Link href="/register">REGISTRARSE</Nav.Link></Button>
+            <Button><Nav.Link href="/login">Iniciar sesion</Nav.Link></Button>
             <Navbar.Brand href="#home">
+              <Nav.Link href="/car">
               <img
                 src={Carrito}
                 width="30"
@@ -60,10 +62,12 @@ function NavBar() {
                 className="d-inline-block align-top"
                 alt="carrito"
               />
+              </Nav.Link>
             </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
       </Container>
+      <Outlet/>
     </Navbar>
 
   );
