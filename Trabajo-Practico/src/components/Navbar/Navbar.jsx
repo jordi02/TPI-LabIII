@@ -5,7 +5,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Button from 'react-bootstrap/esm/Button';
 import Carrito from "../../assets/navbar/car.png"
 //import { useState } from 'react';
-import { Outlet, Link } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 // //Modulos Firebase
 // import appFirebase from "../../credenciales"
