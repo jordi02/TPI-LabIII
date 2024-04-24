@@ -2,7 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import Button from 'react-bootstrap/esm/Button';
+import Button from 'react-bootstrap/Button';
 import Carrito from "../../assets/navbar/car.png"
 //import { useState } from 'react';
 import { Outlet } from 'react-router-dom';
@@ -30,7 +30,7 @@ function NavBar() {
     
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary fixed-top">
       <Container fluid>
-        <Navbar.Brand href="#home">PUROHABITO</Navbar.Brand>
+        <Navbar.Brand href="/">PUROHABITO</Navbar.Brand>
         <Nav.Link href="/us">Sobre nosotros</Nav.Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -51,8 +51,8 @@ function NavBar() {
             <Nav.Link href="/contact">Contacto</Nav.Link>
           </Nav>
           <Nav>
-            <Button><Nav.Link href="/register">REGISTRARSE</Nav.Link></Button>
-            <Button><Nav.Link href="/login">Iniciar sesion</Nav.Link></Button>
+            <Button className='m-1' size="sm" variant="outline-secondary"><Nav.Link href="/register">Registrarse</Nav.Link></Button>
+            <Button className='m-1' size="sm" variant="outline-secondary"><Nav.Link href="/login">Iniciar sesion</Nav.Link></Button>
             <Navbar.Brand href="#home">
               <Nav.Link href="/car">
               <img
