@@ -74,7 +74,7 @@ function NavBar() {
                 <Form onSubmit={authentication}>
                   <Form.Group
                     className="mb-3"
-                    // controlId="exampleForm.ControlInput1"
+                    //controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label>Ingrese email:</Form.Label>
                     <Form.Control
@@ -87,7 +87,7 @@ function NavBar() {
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
-                    // controlId="exampleForm.ControlTextarea1"
+                    //controlId="exampleForm.ControlTextarea1"
                   >
                     <Form.Label>Ingrese su contraseña:</Form.Label>
                     <Form.Control type="password" rows={1} id="password" name="password"/>
