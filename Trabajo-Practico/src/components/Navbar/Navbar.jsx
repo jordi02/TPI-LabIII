@@ -13,11 +13,12 @@ import { useState } from "react";
 
 function NavBar() {
 
-  const [show, setShow] = useState(false);
 
+  // Estados boton Iniciar sesion
+  const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
+  // Estados y captura usuario en Inicio de sesion
   const [email, setEmail] = useState(null)
   const [password, setPassword] = useState(null)
 
@@ -25,8 +26,8 @@ function NavBar() {
     
     e.preventDefault()
 
-    setEmail(e.target.email.value)
-    setPassword(e.target.password.value)
+    setEmail(e.target.value)
+    setPassword(e.target.value)
 
     console.log(email)
     console.log(password)
@@ -87,6 +88,7 @@ function NavBar() {
                       autoFocus
                       id="email"
                       name="email"
+                      onChange={authentication}
                     />
                   </Form.Group>
                   <Form.Group
@@ -94,7 +96,7 @@ function NavBar() {
                     //controlId="exampleForm.ControlTextarea1"
                   >
                     <Form.Label>Ingrese su contraseña:</Form.Label>
-                    <Form.Control type="password" rows={1} id="password" name="password"/>
+                    <Form.Control type="password" rows={1} id="password" name="password" onChange={authentication}/>
                   </Form.Group>
                 </Form>
               </Modal.Body>
@@ -107,30 +109,7 @@ function NavBar() {
                 </Button>
               </Modal.Footer>
             </Modal>
-            {/* <div className="dropdown">
-              <Button type="button" className="m-1" style={{ transform: 'scale(1.1)', fontSize: "10px" }} variant="outline-secondary" data-bs-toggle="dropdown" aria-expanded="false" data-bs-auto-close="outside">
-                Iniciar sesion
-              </Button>
-              <form className="dropdown-menu p-4">
-                <div className="mb-3">
-                  <label htmlFor="exampleDropdownFormEmail2" className="form-label">Email address</label>
-                  <input type="email" className="form-control" id="exampleDropdownFormEmail2" placeholder="email@example.com"/>
-                </div>
-                <div className="mb-3">
-                  <label htmlFor="exampleDropdownFormPassword2" className="form-label">Password</label>
-                  <input type="password" className="form-control" id="exampleDropdownFormPassword2" placeholder="Password"/>
-                </div>
-                <div className="mb-3">
-                  <div className="form-check">
-                    <input type="checkbox" className="form-check-input" id="dropdownCheck2"/>
-                      <label className="form-check-label" htmlFor="dropdownCheck2">
-                        Remember me
-                      </label>
-                  </div>
-                </div>
-                <button type="submit" className="btn btn-primary">Sign in</button>
-              </form>
-            </div> */}
+           
             <Navbar.Brand href="#home">
               <Nav.Link href="/car">
                 <img
