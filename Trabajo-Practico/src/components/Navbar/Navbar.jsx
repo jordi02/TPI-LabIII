@@ -9,28 +9,33 @@ import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
 
+import appFirebase from "../../credenciales";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+const auth = getAuth(appFirebase)
 
 
 function NavBar() {
 
 
-  // Estados boton Iniciar sesion
+  // Estados mostrar/ocultar boton Iniciar sesion
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   // Estados y captura usuario en Inicio de sesion
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
+  // const [email, setEmail] = useState(null)
+  // const [password, setPassword] = useState(null)
 
-  const authentication = async(e) => {
-    
+  const handleLogin = async (e) => {
+
     e.preventDefault()
 
-    setEmail(e.target.value)
-    setPassword(e.target.value)
+    const email = e.target.email.value
+    const password = e.target.password.value
 
     console.log(email)
     console.log(password)
+
+    await signInWithEmailAndPassword(auth, email, password)
 
   }
 
@@ -61,7 +66,7 @@ function NavBar() {
               <Nav.Link href="/register">Registrarse</Nav.Link>
             </Button>
 
-            {    /* Boton Inicio de sesion */    }
+            {    /* Boton Inicio de sesion */}
             <Button
               className="m-1"
               size="sm"
@@ -76,10 +81,10 @@ function NavBar() {
                 <Modal.Title>Inicio de sesión</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form onSubmit={authentication}>
+                <Form onSubmit={handleLogin}>
                   <Form.Group
                     className="mb-3"
-                    //controlId="exampleForm.ControlInput1"
+                  //controlId="exampleForm.ControlInput1"
                   >
                     <Form.Label>Ingrese email:</Form.Label>
                     <Form.Control
@@ -88,15 +93,15 @@ function NavBar() {
                       autoFocus
                       id="email"
                       name="email"
-                      onChange={authentication}
+                      // onChange={handleLogin}
                     />
                   </Form.Group>
                   <Form.Group
                     className="mb-3"
-                    //controlId="exampleForm.ControlTextarea1"
+                  //controlId="exampleForm.ControlTextarea1"
                   >
                     <Form.Label>Ingrese su contraseña:</Form.Label>
-                    <Form.Control type="password" rows={1} id="password" name="password" onChange={authentication}/>
+                    <Form.Control type="password" rows={1} id="password" name="password"  />
                   </Form.Group>
                 </Form>
               </Modal.Body>
@@ -109,7 +114,7 @@ function NavBar() {
                 </Button>
               </Modal.Footer>
             </Modal>
-           
+
             <Navbar.Brand href="#home">
               <Nav.Link href="/car">
                 <img
