@@ -18,11 +18,15 @@ function NavBar() {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
+
   const authentication = async(e) => {
+    
     e.preventDefault()
 
-    const email = e.target.email.value;
-    const password = e.target.password.value;
+    setEmail(e.target.email.value)
+    setPassword(e.target.password.value)
 
     console.log(email)
     console.log(password)
