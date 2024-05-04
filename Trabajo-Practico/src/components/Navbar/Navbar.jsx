@@ -8,35 +8,43 @@ import { Outlet } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
-import appFirebase from "../../credenciales";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-const auth = getAuth(appFirebase)
+// Modulos Firebase
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../credenciales"
 
 
 function NavBar() {
-
 
   // Estados mostrar/ocultar boton Iniciar sesion
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // Estados y captura usuario en Inicio de sesion
-  // const [email, setEmail] = useState(null)
-  // const [password, setPassword] = useState(null)
+  // Estados usuario en Inicio de sesion
+  const [email, setEmail] = useState(null)
+  const [password, setPassword] = useState(null)
 
   const handleLogin = async (e) => {
 
     e.preventDefault()
 
-    const email = e.target.email.value
-    const password = e.target.password.value
+    try {
 
-    console.log(email)
-    console.log(password)
+      await signInWithEmailAndPassword(auth, email, password);
+      console.log("El usuario se registró existosamente!");
+      window.location.href="/login"
+      toast.success("El usuario se registró existosamente!", {
+        position: "top-center",
+      });
 
-    await signInWithEmailAndPassword(auth, email, password)
-
+    } catch (error) {
+      console.log(error.message);
+      toast.error(error.message, {
+        position:"bottom-center"
+      });
+      
+    }
   }
 
   return (
@@ -92,8 +100,7 @@ function NavBar() {
                       placeholder="nombre@ejemplo.com"
                       autoFocus
                       id="email"
-                      name="email"
-                      // onChange={handleLogin}
+                      onChange={(e) => setEmail(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group
@@ -101,12 +108,17 @@ function NavBar() {
                   //controlId="exampleForm.ControlTextarea1"
                   >
                     <Form.Label>Ingrese su contraseña:</Form.Label>
-                    <Form.Control type="password" rows={1} id="password" name="password"  />
+                    <Form.Control
+                      type="password"
+                      rows={1}
+                      id="password"
+                      onChange={(e) => setPassword(e.target.value)}
+                      />
                   </Form.Group>
                 </Form>
               </Modal.Body>
               <Modal.Footer>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={handleLogin}>
                   Ingresar
                 </Button>
                 <Button variant="secondary" onClick={handleClose}>
