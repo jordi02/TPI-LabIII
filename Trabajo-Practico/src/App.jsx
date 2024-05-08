@@ -9,24 +9,22 @@ import Car from "./components/car/Car";
 import Contact from "./components/contact/Contact";
 import Us from "./components/us/Us";
 import { useEffect, useState } from "react";
+import ItemListContainer from "./components/itemList/ItemListContainer";
 
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 //Modulos Firebase
-import { auth } from "./credenciales"
-
+import { auth } from "./credenciales";
 
 function App() {
-
   // Actualicion estado de usuario
-  const [usuario, setUsuario] = useState()
+  const [usuario, setUsuario] = useState();
 
   useEffect(() => {
     auth.onAuthStateChanged((usuario) => {
-      setUsuario(usuario)
+      setUsuario(usuario);
     });
   });
 
@@ -34,17 +32,14 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route
-          path="/"
-          element={usuario ? <Navigate to="/login" /> : <NavBar />}
-        />
+        <Route index path="/" element={<ItemListContainer />} />
         <Route path="/us" element={<Us />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/car" element={<Car />} />
       </Routes>
-      <ToastContainer/>
+      <ToastContainer />
       <Footer />
     </>
   );
