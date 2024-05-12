@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
+
 const Item = ({ item }) => {
+
   const { title, price, stock, pictureUrl, detail, id, category } = item;
+
   return (
+
     <div className="shell">
       <div className="container">
         <div className="row">
@@ -38,7 +42,9 @@ const Item = ({ item }) => {
         </div>
       </div>
     </div>
+
   );
+
 };
 
 export default Item;

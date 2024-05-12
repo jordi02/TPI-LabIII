@@ -3,13 +3,19 @@ import { Link } from "react-router-dom";
 import { CartContext } from "../navbar/CartContext";
 
 const ItemDetail = ({ item }) => {
+
   const { addItem } = useContext(CartContext);
 
   const { title, stock, pictureUrl, detail } = item;
+
   const onAdd = (amount) => {
+
     addItem(item, amount);
+
   };
+
   return (
+
     <div className="card-class2">
       <img className="img-detail" src={pictureUrl} alt="Card image cap" />
       <div className="card-body d-flex flex-column justify-content-center">
@@ -23,7 +29,9 @@ const ItemDetail = ({ item }) => {
         </Link>
       </div>
     </div>
+
   );
+  
 };
 
 export default ItemDetail;

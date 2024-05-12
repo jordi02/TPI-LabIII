@@ -1,7 +1,9 @@
 import Item from "../item/Item";
 
 const ItemList = ({ items }) => {
+
   return (
+
     <div className="container">
       <div className="row">
         {items.map((item) => (
@@ -11,7 +13,9 @@ const ItemList = ({ items }) => {
         ))}
       </div>
     </div>
+
   );
+  
 };
 
 export default ItemList;
