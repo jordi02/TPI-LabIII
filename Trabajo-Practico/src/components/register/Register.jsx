@@ -30,6 +30,7 @@ const Register = () => {
           email: usuario.email,
           firstName: nombre,
           lastName: apellido,
+          role: "user",
 
         });
       }
