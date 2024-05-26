@@ -6,9 +6,13 @@ import Button from "react-bootstrap/Button";
 import Carrito from "../../assets/navbar/car.png";
 import Login from "../login/Login";
 import { Outlet } from "react-router-dom";
+import { useContext } from "react"
+import { userContext } from "../userState/StateComponent";
 
 
 function NavBar() {
+
+  const { usuario, logout } = useContext(userContext);
 
   return (
 
@@ -16,9 +20,9 @@ function NavBar() {
       <Container fluid>
 
         <Navbar.Brand href="/">PUROHABITO</Navbar.Brand>
-        
+
         <Nav.Link href="/us">Sobre nosotros</Nav.Link>
-        
+
         {/* Botón Productos */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
@@ -40,13 +44,29 @@ function NavBar() {
           </Nav>
           <Nav>
 
-            {/* Botón Registrarse */}
-            <Button className="m-1" size="sm" variant="outline-secondary">
-              <Nav.Link href="/register">Registrarse</Nav.Link>
-            </Button>
+            {usuario ? (
 
-            {/* Botón Inicio de sesión */}
-            <Login />
+              <>
+
+                <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', }}>Hola Federico, bienvenido</p>
+                <Button className="m-1" size="sm" variant="outline-secondary" onClick={() => logout()}>Cerrar sesion</Button>
+
+              </>
+
+            ) : (
+
+              <>
+                {/* Botón Registrarse */}
+                <Button className="m-1" size="sm" variant="outline-secondary">
+                  <Nav.Link href="/register">Registrarse</Nav.Link>
+                </Button>
+
+                {/* Botón Inicio de sesión */}
+                <Login />
+
+              </>
+
+            )}
 
             {/* Botón Carrito */}
             <Navbar.Brand href="#home">
@@ -65,7 +85,7 @@ function NavBar() {
         </Navbar.Collapse>
       </Container>
       <Outlet />
-    </Navbar>
+    </Navbar >
 
   );
 
