@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types';
 
 const Item = ({ item }) => {
 
@@ -45,6 +46,10 @@ const Item = ({ item }) => {
 
   );
 
+};
+
+Item.propTypes = {
+  item: PropTypes.array.isRequired
 };
 
 export default Item;

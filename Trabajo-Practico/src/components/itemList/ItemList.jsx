@@ -1,4 +1,5 @@
 import Item from "../item/Item";
+import PropTypes from 'prop-types';
 
 const ItemList = ({ items }) => {
 
@@ -17,5 +18,10 @@ const ItemList = ({ items }) => {
   );
   
 };
+
+ItemList.propTypes = {
+  items: PropTypes.array.isRequired
+};
+
 
 export default ItemList;
