@@ -1,56 +1,9 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useState } from "react";
-import { auth, db } from "../../credenciales";
-import { setDoc, doc } from "firebase/firestore";
-import { toast } from "react-toastify";
-
+import { useContext } from "react";
+import { userContext } from "../userState/StateComponent";
 
 const Register = () => {
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [nombre, setNombre] = useState("");
-  const [apellido, setApellido] = useState("");
-
-  const handleRegister = async (e) => {
-
-    e.preventDefault();
-
-    try {
-
-      await createUserWithEmailAndPassword(auth, email, password);
-      const usuario = auth.currentUser;
-      console.log(usuario);
-
-      if (usuario) {
-
-        // Guardando nuevo usuario en DB
-        await setDoc(doc(db, "Users", usuario.uid), {
-
-          email: usuario.email,
-          firstName: nombre,
-          lastName: apellido,
-          role: "user",
-
-        });
-      }
-
-      console.log("Usuario registrado exitosamente!");
-      toast.success("Usuario registrado exitosamente!", {
-        position: "top-center",
-      });
-
-    } catch (error) {
-
-      console.log(error.message);
-      toast.error(error.message, {
-        position: "bottom-center",
-
-      });
-
-    }
-
-  };
+  const { setEmailRegister, setPasswordRegister, setNombreRegister, setApellidoRegister, handleRegister, } = useContext(userContext);
 
   return (
 
@@ -63,7 +16,7 @@ const Register = () => {
           type="text"
           className="form-control"
           placeholder="Ej Pedro"
-          onChange={(e) => setNombre(e.target.value)}
+          onChange={(e) => setNombreRegister(e.target.value)}
           required
         />
       </div>
@@ -74,7 +27,7 @@ const Register = () => {
           type="text"
           className="form-control"
           placeholder="Ej Gonzalez"
-          onChange={(e) => setApellido(e.target.value)}
+          onChange={(e) => setApellidoRegister(e.target.value)}
         />
       </div>
 
@@ -84,7 +37,7 @@ const Register = () => {
           type="email"
           className="form-control"
           placeholder="ejemp@gmail.com"
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => setEmailRegister(e.target.value)}
           required
         />
       </div>
@@ -94,7 +47,7 @@ const Register = () => {
         <input
           type="password"
           className="form-control"
-          onChange={(e) => setPassword(e.target.value)}
+          onChange={(e) => setPasswordRegister(e.target.value)}
           required
         />
       </div>

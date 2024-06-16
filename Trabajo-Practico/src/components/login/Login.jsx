@@ -1,12 +1,8 @@
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { useState } from "react";
-import { toast } from "react-toastify";
-
-// Modulos Firebase
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../credenciales"
+import { useState, useContext } from "react";
+import { userContext } from "../userState/StateComponent";
 
 const Login = () => {
 
@@ -14,31 +10,8 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  // Estados usuario en Inicio de sesion
-  const [email, setEmail] = useState(null)
-  const [password, setPassword] = useState(null)
-
-  const handleLogin = async (e) => {
-
-    e.preventDefault()
-
-    try {
-
-      await signInWithEmailAndPassword(auth, email, password);
-      console.log("El usuario se registró existosamente!");
-      window.location.href = "/login"
-      toast.success("El usuario se registró existosamente!", {
-        position: "top-center",
-      });
-
-    } catch (error) {
-      console.log(error.message);
-      toast.error(error.message, {
-        position: "bottom-center"
-      });
-
-    }
-  }
+  
+  const { setEmailSesion, setPasswordSesion, handleLogin } = useContext(userContext);
 
   return (
 
@@ -58,7 +31,7 @@ const Login = () => {
           <Modal.Title>Inicio de sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          <Form onSubmit={handleLogin}>
+          <Form type="submit">
             <Form.Group className="mb-3">
               <Form.Label>Ingrese email:</Form.Label>
               <Form.Control
@@ -66,7 +39,7 @@ const Login = () => {
                 placeholder="nombre@ejemplo.com"
                 autoFocus
                 id="email"
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmailSesion(e.target.value)}
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -74,7 +47,7 @@ const Login = () => {
               <Form.Control
                 type="password"
                 id="password"
-                onChange={(e) => setPassword(e.target.value)}
+                onChange={(e) => setPasswordSesion(e.target.value)}
               />
             </Form.Group>
           </Form>
