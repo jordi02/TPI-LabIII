@@ -1,0 +1,110 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
+
+body {
+    font-family: 'Muli', sans-serif;
+    background: rgb(255, 255, 255);
+}
+
+.shell {
+    padding: 80px 0;
+}
+
+.wsk-cp-product {
+    width: 300px;
+    height: auto; /* Ajustar la altura automáticamente */
+    background: #fff;
+    padding: 10px;
+    border-radius: 6px;
+    box-shadow: 4px 6px rgba(0, 0, 0, 0.12), 0 3px 4px rgba(0, 0, 0, 0.24);
+    position: relative;
+    margin: 20px auto;
+    text-align: center; /* Centrar contenido */
+}
+
+.wsk-cp-img {
+    position: relative; /* Cambiar a relativo */
+    width: 100%;
+    padding: 0; /* Quitar padding */
+    margin-bottom: 15px; /* Agregar margen inferior */
+    transition: all 0.2s ease-in-out;
+}
+
+.wsk-cp-img img {
+    width: 100%;
+    transition: all 0.2s ease-in-out;
+    border-radius: 6px;
+}
+
+.wsk-cp-product:hover .wsk-cp-img {
+    top: 0; /* Quitar desplazamiento hacia arriba */
+}
+
+.wsk-cp-product:hover .wsk-cp-img img {
+    box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
+}
+
+.wsk-cp-text {
+    padding-top: 0; /* Quitar padding superior */
+}
+
+.wsk-cp-text .title-product {
+    text-align: center;
+}
+
+.wsk-cp-text .title-product h3 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 15px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
+.card-foter {
+    width: 100%;
+    height: 100%;
+    padding: 5px;
+    border-top: 1px solid #ddd;
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Espaciar elementos */
+    align-items: center; /* Alinear verticalmente */
+}
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.wsk-btn {
+    display: inline-block;
+    color: #212121;
+    text-align: center;
+    font-size: 18px;
+    transition: all 0.2s ease-in-out;
+    border-color: #00c200;
+    background: #00c200;
+    padding: 12px 30px;
+    border-radius: 27px;
+    margin: 0 5px;
+}
+
+.wsk-btn:hover,
+.wsk-btn:focus,
+.wsk-btn:active {
+    color: #fff;
+}
+
+.red {
+    color: #F44336;
+    font-size: 22px;
+    display: inline-block;
+    margin: 0 5px;
+}
+@media screen and (max-width: 991px) {
+    .wsk-cp-product {
+        margin: 40px auto;
+    }
+
+
+}
