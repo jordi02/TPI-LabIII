@@ -2,12 +2,16 @@ import { useContext } from "react";
 import { userContext } from "../userState/StateComponent";
 
 const Register = () => {
-
-  const { setEmailRegister, setPasswordRegister, setNombreRegister, setApellidoRegister, handleRegister, } = useContext(userContext);
+  const {
+    setEmailRegister,
+    setPasswordRegister,
+    setNombreRegister,
+    setApellidoRegister,
+    handleRegister,
+  } = useContext(userContext);
 
   return (
-
-    <form onSubmit={handleRegister} style={{ marginBottom: "100px" }}>
+    <form onSubmit={(e) => handleRegister(e, "user")} style={{ marginBottom: "100px" }}>
       <h3>Registro de nuevo usuario</h3>
 
       <div className="mb-3">
@@ -58,12 +62,10 @@ const Register = () => {
         </button>
       </div>
       <p className="forgot-password text-right">
-        Si ya estas registrado <a href="/">Inicia sesion</a>
+        Si ya estás registrado <a href="/">Inicia sesión</a>
       </p>
     </form>
-
   );
-
-}
+};
 
 export default Register;

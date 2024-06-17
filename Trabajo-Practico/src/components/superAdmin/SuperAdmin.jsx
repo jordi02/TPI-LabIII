@@ -1,19 +1,25 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { userContext } from "../userState/StateComponent";
 
-
 const SuperAdmin = () => {
-  const { 
-    setEmailRegister, 
-    setPasswordRegister, 
-    setNombreRegister, 
-    setApellidoRegister, 
-    setRoleRegister, 
-    handleRegister 
+  const {
+    setEmailRegister,
+    setPasswordRegister,
+    setNombreRegister,
+    setApellidoRegister,
+    setRolRegister,
+    handleRegister,
   } = useContext(userContext);
 
+  const [rol, setRol] = useState("user"); // Estado local para el rol
+
+  const handleRoleChange = (e) => {
+    setRol(e.target.value);
+    setRolRegister(e.target.value); // Actualizando el contexto
+  };
+
   return (
-    <form onSubmit={handleRegister} style={{ marginBottom: "100px" }}>
+    <form onSubmit={(e) => handleRegister(e, rol)} style={{ marginBottom: "100px" }}>
       <h3>Registro de nuevo usuario</h3>
 
       <div className="mb-3">
@@ -60,14 +66,15 @@ const SuperAdmin = () => {
 
       <div className="mb-3">
         <label>Rol</label>
-        <select 
-          className="form-control" 
-          onChange={(e) => setRoleRegister(e.target.value)} 
+        <select
+          className="form-control"
+          onChange={handleRoleChange}
+          value={rol}
           required
         >
-          <option value="user">Usuario</option>
-          <option value="admin">Administrador</option>
-          <option value="superadmin">Superadministrador</option>
+          <option value="user">User</option>
+          <option value="admin">Admin</option>
+          <option value="superadmin">SuperAdmin</option>
         </select>
       </div>
 
@@ -76,6 +83,9 @@ const SuperAdmin = () => {
           Registrar
         </button>
       </div>
+      <p className="forgot-password text-right">
+        Si ya estás registrado <a href="/">Inicia sesión</a>
+      </p>
     </form>
   );
 };
