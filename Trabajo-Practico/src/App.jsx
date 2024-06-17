@@ -8,7 +8,6 @@ import AdminLogic from "./components/adminItems/AdminLogic"
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Car from "./components/car/Car";
 import Contact from "./components/contact/Contact";
-import Us from "./components/us/Us";
 import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
 // Estilos Toastify
