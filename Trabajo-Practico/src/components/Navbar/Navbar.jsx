@@ -14,6 +14,10 @@ function NavBar() {
 
   const { userData, usuario, logout } = useContext(userContext);
 
+  useEffect(() => {
+    console.log("Datos en NavBar:", userData);
+  }, [userData]);
+
   return (
 
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary fixed-top">

@@ -2,13 +2,8 @@ import { useContext } from "react";
 import { userContext } from "../userState/StateComponent";
 
 const Register = () => {
-  const {
-    setEmailRegister,
-    setPasswordRegister,
-    setNombreRegister,
-    setApellidoRegister,
-    handleRegister,
-  } = useContext(userContext);
+
+  const { setEmailRegister, setPasswordRegister, setNombreRegister, setApellidoRegister, handleRegister } = useContext(userContext);
 
   return (
     <form onSubmit={(e) => handleRegister(e, "user")} style={{ marginBottom: "100px" }}>
