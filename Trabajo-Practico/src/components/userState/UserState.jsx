@@ -13,7 +13,7 @@ const UserState = ({ children }) => {
   const [passwordRegister, setPasswordRegister] = useState("");
   const [nombreRegister, setNombreRegister] = useState("");
   const [apellidoRegister, setApellidoRegister] = useState("");
-  const [rolRegister, setRolRegister] = useState("user"); // Nuevo estado para el rol
+ 
 
   const handleRegister = async (e, rol = "user") => {
 
@@ -146,7 +146,7 @@ const UserState = ({ children }) => {
   return (
 
     //Updated upstream
-    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, setPasswordSesion, setNombreRegister, setApellidoRegister, setRolRegister, handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
+    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, setPasswordSesion, setNombreRegister, setApellidoRegister,  handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
       {children}
     </userContext.Provider>
     //Stashed changes

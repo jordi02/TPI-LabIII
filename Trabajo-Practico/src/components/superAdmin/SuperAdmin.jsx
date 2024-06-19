@@ -7,7 +7,6 @@ const SuperAdmin = () => {
     setPasswordRegister,
     setNombreRegister,
     setApellidoRegister,
-    setRolRegister,
     handleRegister,
   } = useContext(userContext);
 
@@ -15,7 +14,6 @@ const SuperAdmin = () => {
 
   const handleRoleChange = (e) => {
     setRol(e.target.value);
-    setRolRegister(e.target.value); // Actualizando el contexto
   };
 
   return (
