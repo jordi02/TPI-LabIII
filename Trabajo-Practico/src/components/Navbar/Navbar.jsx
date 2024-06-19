@@ -6,13 +6,13 @@ import Button from "react-bootstrap/Button";
 import Carrito from "../../assets/navbar/car.png";
 import Login from "../login/Login";
 import { Outlet } from "react-router-dom";
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { userContext } from "../userState/StateComponent";
 
 
 function NavBar() {
 
-  const { usuario, logout } = useContext(userContext);
+  const { userData, usuario, logout } = useContext(userContext);
 
   return (
 
@@ -48,8 +48,9 @@ function NavBar() {
 
               <>
 
-                <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', }}>Hola Federico, bienvenido</p>
+                <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', }}>Hola {userData?.firstName}, bienvenido</p>
                 <Button className="m-1" size="sm" variant="outline-secondary" onClick={() => logout()}>Cerrar sesion</Button>
+                
 
               </>
 
