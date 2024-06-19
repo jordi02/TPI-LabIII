@@ -6,11 +6,11 @@ const ItemListContainer = () => {
 
   const [items, setItems] = useState([]);
 
-  const [loading, setLoading] = useState(true);
+  //const [loading, setLoading] = useState(true);
 
   useEffect(() => {
 
-    setLoading(true);
+    //setLoading(true);
     const db = getFirestore();
     const itemsCollection = collection(db, "Products");
 
@@ -19,11 +19,11 @@ const ItemListContainer = () => {
 
       setItems(data);
       console.log(data);
-      setLoading(false);
+      //setLoading(false);
 
     });
 
-  },);
+  },[]);
 
   return (
 

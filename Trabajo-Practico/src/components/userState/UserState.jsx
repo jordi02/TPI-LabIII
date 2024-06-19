@@ -13,7 +13,7 @@ const UserState = ({ children }) => {
   const [passwordRegister, setPasswordRegister] = useState("");
   const [nombreRegister, setNombreRegister] = useState("");
   const [apellidoRegister, setApellidoRegister] = useState("");
- 
+
 
   const handleRegister = async (e, rol = "user") => {
 
@@ -24,7 +24,6 @@ const UserState = ({ children }) => {
       const usuario = auth.currentUser;
       console.log(usuario);
 
-      // Updated upstream
       if (usuario) {
         // Guardando nuevo usuario en DB
         await setDoc(doc(db, "Users", usuario.uid), {
@@ -94,12 +93,6 @@ const UserState = ({ children }) => {
 
   }
 
-  useEffect(() => {
-    if (userData) {
-        console.log("Datos del usuario después de iniciar sesión:", userData);
-    }
-}, [userData]);
-
   // Obteniendo datos del usuario
   const getUserData = async (uid) => {
     try {
@@ -120,15 +113,17 @@ const UserState = ({ children }) => {
 
   useEffect(() => {
 
-    const unsubscribe = auth.onAuthStateChanged((usuario) => {
+    const unsubscribe = auth.onAuthStateChanged(async (usuario) => {
       setUsuario(usuario); // Actualizando el estado con la información del usuario autenticado
+      if (usuario) {
+        const userData = await getUserData(usuario.uid);
+        setUserData(userData); // Actualizar userData cuando el estado de autenticación cambie
+      }
     });
 
     return () => unsubscribe(); // Cancelando o cerrando la suscripción y/o proceso para evitar que se inicien varias cuentas a la vez
 
   }, []); // Array de dependencias vacío para que solo se ejecute 1 vez
-
-  // Stashed changes
 
   // Cerrando sesion
   const logout = () => {
@@ -145,11 +140,9 @@ const UserState = ({ children }) => {
 
   return (
 
-    //Updated upstream
-    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, setPasswordSesion, setNombreRegister, setApellidoRegister,  handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
+    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, setPasswordSesion, setNombreRegister, setApellidoRegister, handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
       {children}
     </userContext.Provider>
-    //Stashed changes
 
   );
 

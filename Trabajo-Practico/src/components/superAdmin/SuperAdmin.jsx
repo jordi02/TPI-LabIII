@@ -2,21 +2,13 @@ import { useContext, useState } from "react";
 import { userContext } from "../userState/StateComponent";
 
 const SuperAdmin = () => {
-  const {
-    setEmailRegister,
-    setPasswordRegister,
-    setNombreRegister,
-    setApellidoRegister,
-    handleRegister,
-  } = useContext(userContext);
 
-  const [rol, setRol] = useState("user"); // Estado local para el rol
+  const { setEmailRegister, setPasswordRegister, setNombreRegister, setApellidoRegister, handleRegister, } = useContext(userContext);
 
-  const handleRoleChange = (e) => {
-    setRol(e.target.value);
-  };
+  const [rol, setRol] = useState("user");
 
   return (
+
     <form onSubmit={(e) => handleRegister(e, rol)} style={{ marginBottom: "100px" }}>
       <h3>Registro de nuevo usuario</h3>
 
@@ -66,7 +58,7 @@ const SuperAdmin = () => {
         <label>Rol</label>
         <select
           className="form-control"
-          onChange={handleRoleChange}
+          onChange={(e) => setRol(e.target.value)}
           value={rol}
           required
         >
@@ -85,7 +77,9 @@ const SuperAdmin = () => {
         Si ya estás registrado <a href="/">Inicia sesión</a>
       </p>
     </form>
+
   );
+  
 };
 
 export default SuperAdmin;
