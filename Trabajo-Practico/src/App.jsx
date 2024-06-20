@@ -4,7 +4,7 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import NavBar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Register from "./components/register/Register";
-//import AdminLogic from "./components/adminItems/AdminLogic"
+import AdminLogic from "./components/adminItems/AdminLogic"
 //import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Car from "./components/car/Car";
 import Contact from "./components/contact/Contact";
@@ -31,6 +31,8 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/car" element={<Car />} />
           <Route path="/item/:id" element={<ItemDetail />} />
+          <Route path="/AdminLogic" element={<AdminLogic />} />
+          <Route path="/edit/:id" element={<AdminLogic />} />
         </Routes>
         <ToastContainer />
         <Footer />

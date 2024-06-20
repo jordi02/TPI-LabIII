@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 
 const AdminItemList = ({ items }) => {
 
+  //ESTA AL PEDO
+
   return (
 
     <div className="container">
