@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ItemList from "./ItemList";
+import Item from "../item/Item";
 import { getFirestore, collection, getDocs } from "firebase/firestore";
 
 const ItemListContainer = () => {
@@ -29,7 +29,7 @@ const ItemListContainer = () => {
 
     <>
       <div className="mt-5">
-        <ItemList items={items} />
+        <Item items={items} />
       </div>
     </>
 

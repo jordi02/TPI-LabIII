@@ -3,7 +3,7 @@ import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 
-
+//ESTA AL PEDO!
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState({});

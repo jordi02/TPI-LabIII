@@ -6,6 +6,7 @@ import { auth, db } from "../../credenciales";
 import { setDoc, getDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
+// eslint-disable-next-line react/prop-types
 const UserState = ({ children }) => {
 
   // Registro de usuario

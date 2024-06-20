@@ -4,11 +4,12 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import NavBar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import Register from "./components/register/Register";
-import AdminLogic from "./components/adminItems/AdminLogic"
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
+//import AdminLogic from "./components/adminItems/AdminLogic"
+//import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Car from "./components/car/Car";
 import Contact from "./components/contact/Contact";
-import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
+//import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
+import ItemDetail from "./components/itemDetail/ItemDetail";
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
@@ -29,7 +30,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/register" element={<Register />} />
           <Route path="/car" element={<Car />} />
-          <Route path="/item/:id" element={<ItemDetailContainer />} />
+          <Route path="/item/:id" element={<ItemDetail />} />
         </Routes>
         <ToastContainer />
         <Footer />
@@ -38,7 +39,7 @@ function App() {
     </>
 
   );
-<Route path="/adminItems" element={<PrivateRoute> <AdminItems /></PrivateRoute>} />
+  //<Route path="/adminItems" element={<PrivateRoute> <AdminItems /></PrivateRoute>} />
 }
 
 export default App;
