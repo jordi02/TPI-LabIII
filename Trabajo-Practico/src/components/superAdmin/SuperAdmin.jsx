@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { userContext } from "../userState/StateComponent";
-import { doc, deleteDoc, getDocs, query, where, collection } from "firebase/firestore";
-import { db } from "../../credenciales"; // Asegúrate de que la ruta es correcta
+import { doc, deleteDoc, getDocs, query, where, collection, updateDoc } from "firebase/firestore";
+import { db } from "../../credenciales"; 
 
 const SuperAdmin = () => {
   const {
@@ -16,6 +16,9 @@ const SuperAdmin = () => {
   const [rol, setRol] = useState("user");
   const [editEmail, setEditEmail] = useState("");
   const [deleteEmail, setDeleteEmail] = useState("");
+  const [editFirstName, setEditFirstName] = useState("");
+  const [editLastName, setEditLastName] = useState("");
+  const [currentUserDoc, setCurrentUserDoc] = useState(null);
 
   // Función para encontrar el documento de usuario por email
   const findUserDocByEmail = async (email) => {
@@ -24,17 +27,54 @@ const SuperAdmin = () => {
     if (querySnapshot.empty) {
       throw new Error("Usuario no encontrado");
     }
-    return querySnapshot.docs[0].ref; // Retorna la referencia del documento
+    return querySnapshot.docs[0]; // Retorna el documento completo
   };
 
   const handleDelete = async () => {
     try {
-      const userDocRef = await findUserDocByEmail(deleteEmail);
-      await deleteDoc(userDocRef);
+      const userDoc = await findUserDocByEmail(deleteEmail);
+      await deleteDoc(userDoc.ref);
       alert('Usuario eliminado exitosamente');
     } catch (error) {
       console.error('Error eliminando usuario:', error);
       alert('Error al eliminar el usuario: ' + error.message);
+    }
+  };
+
+  const handleEdit = async () => {
+    try {
+      const userDoc = await findUserDocByEmail(editEmail);
+      setCurrentUserDoc(userDoc);
+      setEditFirstName(userDoc.data().firstName || "");
+      setEditLastName(userDoc.data().lastName || "");
+    } catch (error) {
+      console.error('Error encontrando usuario:', error);
+      alert('Error al encontrar el usuario: ' + error.message);
+    }
+  };
+
+  const handleUpdate = async () => {
+    if (!currentUserDoc) {
+      alert("Primero encuentra un usuario");
+      return;
+    }
+
+    try {
+      const updatedData = {};
+      if (editFirstName) updatedData.firstName = editFirstName;
+      if (editLastName) updatedData.lastName = editLastName;
+
+      await updateDoc(currentUserDoc.ref, updatedData);
+
+      alert('Usuario actualizado exitosamente');
+      // Limpia el estado después de la actualización
+      setEditEmail("");
+      setEditFirstName("");
+      setEditLastName("");
+      setCurrentUserDoc(null);
+    } catch (error) {
+      console.error('Error actualizando usuario:', error);
+      alert('Error al actualizar el usuario: ' + error.message);
     }
   };
 
@@ -131,14 +171,42 @@ const SuperAdmin = () => {
               type="email"
               className="form-control"
               placeholder="ejemp@gmail.com"
+              value={editEmail}
               onChange={(e) => setEditEmail(e.target.value)}
             />
           </div>
           <div className="d-grid">
-            <button className="btn btn-warning">
-              Editar
+            <button onClick={handleEdit} className="btn btn-warning">
+              Buscar
             </button>
           </div>
+          {currentUserDoc && (
+            <div style={{ marginTop: "20px" }}>
+              <div className="mb-3">
+                <label>Nombre</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={editFirstName}
+                  onChange={(e) => setEditFirstName(e.target.value)}
+                />
+              </div>
+              <div className="mb-3">
+                <label>Apellido</label>
+                <input
+                  type="text"
+                  className="form-control"
+                  value={editLastName}
+                  onChange={(e) => setEditLastName(e.target.value)}
+                />
+              </div>
+              <div className="d-grid">
+                <button onClick={handleUpdate} className="btn btn-success">
+                  Actualizar
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -151,6 +219,7 @@ const SuperAdmin = () => {
               type="email"
               className="form-control"
               placeholder="ejemp@gmail.com"
+              value={deleteEmail}
               onChange={(e) => setDeleteEmail(e.target.value)}
             />
           </div>
