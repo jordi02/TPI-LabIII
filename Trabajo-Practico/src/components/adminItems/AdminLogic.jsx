@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
 //import AdminItemList from "./AdminItemList";
 import ItemAdmin from "./ItemAdmin";
-import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc, addDoc } from "firebase/firestore";
 
 const AdminLogic = () => {
 
@@ -15,19 +15,49 @@ const AdminLogic = () => {
 
   //Trae los productos
   useEffect(() => {
+      //setLoading(true);
+      const db = getFirestore();
+      const itemsCollection = collection(db, "Products");
 
-    //setLoading(true);
-    const db = getFirestore();
-    const itemsCollection = collection(db, "Products");
+      getDocs(itemsCollection).then((snapshot) => {
+        const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+        setItems(data);
+        console.log(data);
+        //setLoading(false);
+      }).catch(error => {
+        console.error("Error fetching documents: ", error);
+        //setLoading(false);
+      });
+  }, [items]);
 
-    getDocs(itemsCollection).then((snapshot) => {
+  // Agregar nuevo producto
+  const [showAddForm, setShowAddForm] = useState(false); // Estado para mostrar el formulario de agregar producto
+  const [newProduct, setNewProduct] = useState({ title: "", pictureUrl: "", price: "", description: "" }); // Estado para manejar los valores del formulario de nuevo producto
+
+  const handleAddChange = (e) => {
+    const { name, value } = e.target;
+    setNewProduct((prevValues) => ({
+      ...prevValues,
+      [name]: value,
+    }));
+  };
+
+  const handleAddProduct = async () => {
+    try {
+      const db = getFirestore();
+      const itemsCollection = collection(db, "Products");
+      await addDoc(itemsCollection, newProduct);
+      alert("Producto agregado con éxito");
+      setShowAddForm(false); // Ocultar el formulario de agregar producto
+      setNewProduct({ title: "", pictureUrl: "", price: "", description: "" }); // Limpiar el formulario
+      const snapshot = await getDocs(itemsCollection);
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setItems(data);
-      console.log(data);
-      //setLoading(false);
-    });
-
-  }, []);
+      setItems(data); // Actualizar la lista de productos
+    } catch (error) {
+      console.error("Error agregando el producto: ", error);
+      alert("Error agregando el producto");
+    }
+  };
 
   //Editar items
   const [editItem, setEditItem] = useState(null); // Estado para manejar el ítem en edición
@@ -60,11 +90,12 @@ const AdminLogic = () => {
       alert("Producto actualizado con éxito");
       setEditItem(null); // Salir del modo de edición
       updateDelete(id); // Actualiza la lista después de la edición
-      navigate('/adminlogic');
+      
     } catch (error) {
       console.error("Error actualizando el producto: ", error);
       alert("Error actualizando el producto");
     }
+    navigate('/Adminlogic');
   };
 
   //Función para manejar la eliminación del producto
@@ -89,12 +120,17 @@ const AdminLogic = () => {
   };
 
   return (
+
     <>
+
       <div className="mt-5">
-        <ItemAdmin items={items} handleEdit={handleEdit} handleChange={handleChange} handleSave={handleSave} editItem={editItem} setEditItem={setEditItem} editValues={editValues} handleDelete={handleDelete} />
+        <ItemAdmin items={items} showAddForm={showAddForm} setShowAddForm={setShowAddForm} newProduct={newProduct} handleAddChange={handleAddChange} handleAddProduct={handleAddProduct} handleEdit={handleEdit} handleChange={handleChange} handleSave={handleSave} editItem={editItem} setEditItem={setEditItem} editValues={editValues} handleDelete={handleDelete} />
       </div>
+
     </>
+
   );
+
 };
 
 export default AdminLogic;
