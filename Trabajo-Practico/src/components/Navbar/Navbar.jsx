@@ -6,12 +6,10 @@ import Button from "react-bootstrap/Button";
 import Carrito from "../../assets/navbar/car.png";
 import Login from "../login/Login";
 import { Outlet } from "react-router-dom";
-import { useContext, useEffect } from "react"
+import { useContext, useEffect } from "react";
 import { userContext } from "../userState/StateComponent";
 
-
 function NavBar() {
-
   const { userData, usuario, logout } = useContext(userContext);
 
   useEffect(() => {
@@ -19,10 +17,8 @@ function NavBar() {
   }, [userData]);
 
   return (
-
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary fixed-top">
       <Container fluid>
-
         <Navbar.Brand href="/">PUROHABITO</Navbar.Brand>
 
         <Nav.Link href="/us">Sobre nosotros</Nav.Link>
@@ -44,22 +40,30 @@ function NavBar() {
             </NavDropdown>
 
             <Nav.Link href="/contact">Contacto</Nav.Link>
-
           </Nav>
           <Nav>
-
             {usuario ? (
-
               <>
-
-                <p style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px', }}>Hola {userData?.firstName}, bienvenido</p>
-                <Button className="m-1" size="sm" variant="outline-secondary" onClick={() => logout()}>Cerrar sesion</Button>
-                
-
+                <p
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "10px",
+                  }}
+                >
+                  Hola {userData?.firstName}, bienvenido
+                </p>
+                <Button
+                  className="m-1"
+                  size="sm"
+                  variant="outline-secondary"
+                  onClick={() => logout()}
+                >
+                  Cerrar sesion
+                </Button>
               </>
-
             ) : (
-
               <>
                 {/* Botón Registrarse */}
                 <Button className="m-1" size="sm" variant="outline-secondary">
@@ -68,14 +72,12 @@ function NavBar() {
 
                 {/* Botón Inicio de sesión */}
                 <Login />
-
               </>
-
             )}
 
             {/* Botón Carrito */}
             <Navbar.Brand href="#home">
-              <Nav.Link href="/car">
+              <Nav.Link href="/cart">
                 <img
                   src={Carrito}
                   width="30"
@@ -85,15 +87,12 @@ function NavBar() {
                 />
               </Nav.Link>
             </Navbar.Brand>
-
           </Nav>
         </Navbar.Collapse>
       </Container>
       <Outlet />
-    </Navbar >
-
+    </Navbar>
   );
-
 }
 
 export default NavBar;
