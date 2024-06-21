@@ -1,0 +1,86 @@
+.Footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    /* Color de fondo del footer, ajusta según tu diseño */
+    padding: 1rem 1rem;
+    /* Mantén el padding superior e inferior como deseas */
+}
+
+.ft-1 h3 {
+    font-weight: 700;
+    font-family: cursive;
+    letter-spacing: 2px;
+    padding: 0.5rem 0;
+}
+
+.ft-1 span {
+    color: #f60838;
+}
+
+.ft-1 p {
+    padding: 1rem 1rem 3rem;
+    padding-left: 8rem;
+    margin-top: 1rem;
+    font-weight: 500;
+    color: #ffffff;
+}
+
+.footer-icons i {
+    padding: 0.4rem 0.5rem;
+    background: #e1e1e1;
+    color: #000000;
+    margin: 0 0.5rem;
+    border-radius: 50%;
+}
+
+.footer-icons i:hover {
+    background: #a4a4a4;
+    color: #fff;
+    transition: 0.6s;
+    cursor: pointer;
+}
+
+.Footer h5 {
+    color: #ffffff;
+    padding-bottom: 1rem;
+}
+
+.ft-2 ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.ft-2 ul li {
+    padding: 0.35rem 0;
+    font-weight: 500;
+}
+
+.ft-2 ul a {
+    text-decoration: none;
+    color: #e8e8e8;
+    font-size: 1.06rem;
+}
+
+.ft-3 p {
+    font-weight: 500;
+    padding: 0.1rem 0;
+    font-size: 1.06rem;
+}
+
+.ft-3 i {
+    padding-right: 0.5rem;
+}
+
+.Last-footer {
+    background: #ffffff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.Last-footer p {
+    margin-bottom: 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
