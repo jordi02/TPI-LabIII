@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { userContext } from "./StateComponent";
 import { toast } from "react-toastify";
 //Modulo Firebase
@@ -8,6 +9,8 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } f
 
 // eslint-disable-next-line react/prop-types
 const UserState = ({ children }) => {
+
+  const navigate = useNavigate();
 
   // Registro de usuario
   const [emailRegister, setEmailRegister] = useState("");
@@ -35,9 +38,6 @@ const UserState = ({ children }) => {
           role: rol, // Usando el rol recibido como parámetro
 
         });
-
-        const newUserData = await getUserData(usuario.uid);
-        setUserData(newUserData); // Actualizando userData despues de registrarse
 
       }
 
@@ -83,7 +83,6 @@ const UserState = ({ children }) => {
         if (user !== null) {
           //Obtener datos del usuario
           const userData = await getUserData(usuarioSesion.uid);
-          setUserData(userData); // Update userData after login
           console.log("Datos del usuario:", userData);
         }
 
@@ -137,6 +136,7 @@ const UserState = ({ children }) => {
     auth.signOut() // Llamada a Firebase para cerrar sesión
       .then(() => {
         setUsuario(null);
+        navigate('/');
       })
       .catch(error => {
         console.error("Error al cerrar sesión: ", error);

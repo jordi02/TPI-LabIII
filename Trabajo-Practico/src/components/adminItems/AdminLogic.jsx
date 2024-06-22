@@ -15,20 +15,20 @@ const AdminLogic = () => {
 
   //Trae los productos
   useEffect(() => {
-      //setLoading(true);
-      const db = getFirestore();
-      const itemsCollection = collection(db, "Products");
+    //setLoading(true);
+    const db = getFirestore();
+    const itemsCollection = collection(db, "Products");
 
-      getDocs(itemsCollection).then((snapshot) => {
-        const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-        setItems(data);
-        console.log(data);
-        //setLoading(false);
-      }).catch(error => {
-        console.error("Error fetching documents: ", error);
-        //setLoading(false);
-      });
-  }, [items]);
+    getDocs(itemsCollection).then((snapshot) => {
+      const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
+      setItems(data);
+      console.log(data);
+      //setLoading(false);
+    }).catch(error => {
+      console.error("Error fetching documents: ", error);
+      //setLoading(false);
+    });
+  }, []);
 
   // Agregar nuevo producto
   const [showAddForm, setShowAddForm] = useState(false); // Estado para mostrar el formulario de agregar producto
@@ -90,7 +90,7 @@ const AdminLogic = () => {
       alert("Producto actualizado con éxito");
       setEditItem(null); // Salir del modo de edición
       updateDelete(id); // Actualiza la lista después de la edición
-      
+
     } catch (error) {
       console.error("Error actualizando el producto: ", error);
       alert("Error actualizando el producto");

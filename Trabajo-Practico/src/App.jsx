@@ -27,13 +27,13 @@ function App() {
           <NavBar />
           <Routes>
             <Route index path="/" element={<ItemListContainer />} />
-            <Route path="/superAdmin" element={<SuperAdmin />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="/AdminLogic" element={<PrivateRoute> <AdminLogic /></PrivateRoute>} />
-            <Route path="/edit/:id" element={<AdminLogic />} />
+            <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
+            <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>} />
           </Routes>
           <ToastContainer />
           <Footer />

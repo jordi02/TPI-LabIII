@@ -5,12 +5,14 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import Carrito from "../../assets/navbar/car.png";
 import Login from "../login/Login";
-import { Outlet } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { userContext } from "../userState/StateComponent";
 
 function NavBar() {
+
   const { userData, usuario, logout } = useContext(userContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     userData;
@@ -54,6 +56,18 @@ function NavBar() {
                 >
                   Hola {userData?.firstName}, bienvenido
                 </p>
+                {userData && userData.role && userData.role.includes('admin') && (
+                  <Button className="m-1"
+                  size="sm"
+                  variant="outline-secondary"
+                  onClick={() => navigate('/AdminLogic')}>Administrar items</Button>
+                )}
+                {userData && userData.role && userData.role.includes('superadmin') && (
+                  <Button className="m-1"
+                  size="sm"
+                  variant="outline-secondary"
+                  onClick={() => navigate('/SuperAdmin')}>Administrar usuarios</Button>
+                )}
                 <Button
                   className="m-1"
                   size="sm"
