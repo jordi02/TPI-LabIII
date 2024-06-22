@@ -27,7 +27,7 @@ const CartProvider = ({ children }) => {
     const batch = writeBatch(db);
     const idList = cartItems.map((product) => product.item.id);
     const withoutStock = [];
-    const collectionRef = collection(db, "items");
+    const collectionRef = collection(db, "Products");
     const docsResponse = await getDocs(
       query(collectionRef, where(documentId(), "in", idList))
     );
