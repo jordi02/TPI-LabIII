@@ -4,15 +4,17 @@ import { userContext } from "../userState/StateComponent";
 
 const PrivateRoute = ({ children, redirectTo = "/" }) => {
 
-    const { usuario } = useContext(userContext);
+    const { userData } = useContext(userContext);
 
-    if(!usuario.role.includes("user")){
+    console.log(userData)
+
+    if (!userData.role.includes("admin")) {
 
         return <Navigate to={redirectTo} />;
     }
 
     return children
-  
+
 }
 
 export default PrivateRoute

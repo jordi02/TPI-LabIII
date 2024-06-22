@@ -35,6 +35,10 @@ const UserState = ({ children }) => {
           role: rol, // Usando el rol recibido como parámetro
 
         });
+
+        const newUserData = await getUserData(usuario.uid);
+        setUserData(newUserData); // Actualizando userData despues de registrarse
+
       }
 
       console.log("Usuario registrado exitosamente!");
@@ -79,6 +83,7 @@ const UserState = ({ children }) => {
         if (user !== null) {
           //Obtener datos del usuario
           const userData = await getUserData(usuarioSesion.uid);
+          setUserData(userData); // Update userData after login
           console.log("Datos del usuario:", userData);
         }
 
