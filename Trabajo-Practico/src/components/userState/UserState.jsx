@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { userContext } from "./StateComponent";
 import { toast } from "react-toastify";
 //Modulo Firebase
@@ -10,13 +9,12 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } f
 // eslint-disable-next-line react/prop-types
 const UserState = ({ children }) => {
 
-  const navigate = useNavigate();
-
   // Registro de usuario
   const [emailRegister, setEmailRegister] = useState("");
   const [passwordRegister, setPasswordRegister] = useState("");
   const [nombreRegister, setNombreRegister] = useState("");
   const [apellidoRegister, setApellidoRegister] = useState("");
+  const [registerOk, setRegisterOk] = useState(false);
 
 
   const handleRegister = async (e, rol = "user") => {
@@ -40,7 +38,7 @@ const UserState = ({ children }) => {
         });
 
       }
-
+      setRegisterOk(true);
       console.log("Usuario registrado exitosamente!");
       toast.success("Usuario registrado exitosamente!", {
         position: "top-center",
@@ -136,7 +134,6 @@ const UserState = ({ children }) => {
     auth.signOut() // Llamada a Firebase para cerrar sesión
       .then(() => {
         setUsuario(null);
-        navigate('/');
       })
       .catch(error => {
         console.error("Error al cerrar sesión: ", error);
@@ -146,7 +143,7 @@ const UserState = ({ children }) => {
 
   return (
 
-    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, setPasswordSesion, setNombreRegister, setApellidoRegister, handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
+    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, registerOk, setPasswordSesion, setNombreRegister, setApellidoRegister, handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
       {children}
     </userContext.Provider>
 

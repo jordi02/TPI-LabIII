@@ -18,6 +18,11 @@ function NavBar() {
     userData;
   }, [userData]);
 
+  const handleLogout = () => {
+    logout();
+    navigate("/"); // Redirigir a la página principal
+  };
+
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary fixed-top">
       <Container fluid>
@@ -56,7 +61,7 @@ function NavBar() {
                 >
                   Hola {userData?.firstName}, bienvenido
                 </p>
-                {userData && userData.role && userData.role.includes('admin') && (
+                {userData && userData.role && userData.role.includes('admin') && !userData.role.includes('superadmin') && (
                   <Button className="m-1"
                   size="sm"
                   variant="outline-secondary"
@@ -72,7 +77,7 @@ function NavBar() {
                   className="m-1"
                   size="sm"
                   variant="outline-secondary"
-                  onClick={() => logout()}
+                  onClick={() => handleLogout()}
                 >
                   Cerrar sesion
                 </Button>
