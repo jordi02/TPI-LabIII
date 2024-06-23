@@ -1,70 +1,33 @@
-import { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
-import { getFirestore, doc, getDoc } from "firebase/firestore";
+import { useState, useContext } from "react";
+import ItemCount from "../item/ItemCount";
+import { Link } from "react-router-dom";
 import { CartContext } from "../CartContext";
-import "./ItemDetail.css";
+import "./ItemDetail.css"
 
-const ItemDetail = () => {
-  const [item, setItem] = useState({});
-  const [quantity, setQuantity] = useState(1);
-  const { id } = useParams();
+
+
+const ItemDetail = ({ item }) => {
   const { addItem } = useContext(CartContext);
-
-  useEffect(() => {
-    const db = getFirestore();
-    const itemDoc = doc(db, "Products", id);
-    getDoc(itemDoc).then((snapshot) => {
-      setItem({ ...snapshot.data(), id: snapshot.id });
-    });
-  }, [id]);
-
-  const handleIncrease = () => {
-    if (quantity < item.stock) {
-      setQuantity(quantity + 1);
-    }
+  const [amount, setAmount] = useState(0);
+  const { title, stock, pictureUrl, detail   } = item;
+  const onAdd = (amount) => {
+    addItem(item, amount);
+    
   };
-
-  const handleDecrease = () => {
-    if (quantity > 1) {
-      setQuantity(quantity - 1);
-    }
-  };
-
-  const handleAddToCart = () => {
-    addItem(item, quantity);
-  };
-
   return (
-    <div className="mt-5">
-      <div className="item-detail-container">
-        <img className="img-detail" src={item?.pictureUrl} alt="Item" />
-        <div className="item-detail-body">
-          <h5 className="item-detail-title">{item?.title}</h5>
-          <p className="item-detail-text">{item?.detail}</p>
-          <p className="item-detail-price">{`$${item?.price}`}</p>
+    <div className="card-class2">
+      <img className="img-detail" src={pictureUrl} alt="Card image cap" />
+      <div className="card-body d-flex flex-column justify-content-center">
+        <h5 className="card-title">{title}</h5>
+        <p className="card-text">{`${stock} Disponibles!`}</p>
+        <p className="card-text">{`${detail}`}</p>
 
-          <div className="quantity-controls">
-            <button
-              onClick={handleDecrease}
-              className="btn btn-outline-secondary"
-            >
-              -
-            </button>
-            <span>{quantity}</span>
-            <button
-              onClick={handleIncrease}
-              className="btn btn-outline-secondary"
-            >
-              +
-            </button>
-          </div>
-          <button
-            onClick={handleAddToCart}
-            className="btn btn-primary add-to-cart-btn"
-          >
-            Agregar al carrito
-          </button>
-        </div>
+      </div>
+      {amount == 0 && <ItemCount stock={stock} initial={0} onAdd={onAdd} />}
+      <div className="d-flex justify-content-center my-3">
+        <Link to="/cart/">
+          <button className="btn btn-dark">Ir al carrito</button>
+        </Link>
       </div>
     </div>
   );

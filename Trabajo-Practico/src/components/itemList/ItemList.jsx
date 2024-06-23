@@ -1,10 +1,8 @@
+
 import Item from "../item/Item";
-import PropTypes from 'prop-types';
 
 const ItemList = ({ items }) => {
-
   return (
-
     <div className="container">
       <div className="row">
         {items.map((item) => (
@@ -14,14 +12,7 @@ const ItemList = ({ items }) => {
         ))}
       </div>
     </div>
-
   );
-  
 };
-
-ItemList.propTypes = {
-  items: PropTypes.array.isRequired
-};
-
 
 export default ItemList;

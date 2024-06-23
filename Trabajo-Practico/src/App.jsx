@@ -8,21 +8,21 @@ import AdminLogic from "./components/adminItems/AdminLogic";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Cart from "./components/cart/Cart";
 import Contact from "./components/contact/Contact";
-//import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
-import ItemDetail from "./components/itemDetail/ItemDetail";
+import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
+
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ItemListContainer from "./components/itemList/ItemListContainer";
-import CartProvider from "./components/CartContext";
+import CartContext from './components/CartContext';
 
 function App() {
 
   return (
 
     <>
-      <CartProvider>
+      <CartContext>
         <BrowserRouter>
           <NavBar />
           <Routes>
@@ -30,15 +30,15 @@ function App() {
             <Route path="/superAdmin" element={<SuperAdmin />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/item/:id" element={<ItemDetail />} />
+            <Route path="/cart/" element={<Cart />} />
+            <Route path="/item/:id" element={<ItemDetailContainer />} />
             <Route path="/AdminLogic" element={<PrivateRoute> <AdminLogic /></PrivateRoute>} />
             <Route path="/edit/:id" element={<AdminLogic />} />
           </Routes>
           <ToastContainer />
           <Footer />
         </BrowserRouter>
-      </CartProvider>
+      </CartContext>
     </>
     
   );
