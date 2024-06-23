@@ -25,6 +25,7 @@ function App() {
       <CartProvider>
         <BrowserRouter>
           <NavBar />
+          <main className="main-content">
           <Routes>
             <Route index path="/" element={<ItemListContainer />} />
             <Route path="/contact" element={<Contact />} />
@@ -35,6 +36,7 @@ function App() {
             <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
             <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>} />
           </Routes>
+          </main>
           <ToastContainer />
           <Footer />
         </BrowserRouter>
