@@ -1,23 +1,21 @@
 import { Navigate } from "react-router-dom"
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { userContext } from "../userState/StateComponent";
 
+// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children, redirectTo = "/" }) => {
 
     const { userData } = useContext(userContext);
-    console.log(userData);
 
-    if (!userData.role.includes("admin")) {
+    useEffect(() => {
+        console.log(userData);
+    }, [userData]);
 
-        return <Navigate to={redirectTo} />;
+    if (userData.role.includes("admin") || userData.role.includes("superadmin")) {
+        return children;
     }
 
-    if (!userData.role.includes("superadmin")) {
-
-        return <Navigate to={redirectTo} />;
-    }
-
-    return children
+    return <Navigate to={redirectTo} />
 
 }
 

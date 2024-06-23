@@ -14,7 +14,6 @@ const UserState = ({ children }) => {
   const [passwordRegister, setPasswordRegister] = useState("");
   const [nombreRegister, setNombreRegister] = useState("");
   const [apellidoRegister, setApellidoRegister] = useState("");
-  const [registerOk, setRegisterOk] = useState(false);
 
 
   const handleRegister = async (e, rol = "user") => {
@@ -38,7 +37,6 @@ const UserState = ({ children }) => {
         });
 
       }
-      setRegisterOk(true);
       console.log("Usuario registrado exitosamente!");
       toast.success("Usuario registrado exitosamente!", {
         position: "top-center",
@@ -59,7 +57,10 @@ const UserState = ({ children }) => {
   // Inicio de sesion
   const [emailSesion, setEmailSesion] = useState(null)
   const [passwordSesion, setPasswordSesion] = useState(null)
-  const [userData, setUserData] = useState(null);
+  const [userData, setUserData] = useState(() => {
+    const storedUserData = localStorage.getItem("userData");
+    return storedUserData ? JSON.parse(storedUserData) : null;
+  });
 
   const handleLogin = async (e) => {
 
@@ -78,10 +79,11 @@ const UserState = ({ children }) => {
       if (usuarioSesion) {
         const auth = getAuth();
         const user = auth.currentUser;
-        if (user !== null) {
-          //Obtener datos del usuario
-          const userData = await getUserData(usuarioSesion.uid);
-          console.log("Datos del usuario:", userData);
+        if (user) {
+          //Obteniendo datos del usuario y creando localStorage para persistencia de datos
+          const fetchedUserData = await getUserData(usuarioSesion.uid);
+          setUserData(fetchedUserData);
+          localStorage.setItem("userData", JSON.stringify(fetchedUserData));
         }
 
       }
@@ -96,7 +98,7 @@ const UserState = ({ children }) => {
 
   }
 
-  // Obteniendo datos del usuario
+  // Funcion para obtener datos del usuario
   const getUserData = async (uid) => {
     try {
       const userDoc = await getDoc(doc(db, "Users", uid));
@@ -120,7 +122,11 @@ const UserState = ({ children }) => {
       setUsuario(usuario); // Actualizando el estado con la información del usuario autenticado
       if (usuario) {
         const userData = await getUserData(usuario.uid);
-        setUserData(userData); // Actualizar userData cuando el estado de autenticación cambie
+        setUserData(userData); // Actualiza userData cuando el estado de autenticación cambie
+        localStorage.setItem("userData", JSON.stringify(userData));
+      } else {
+        setUserData(null);
+        localStorage.removeItem("userData");
       }
     });
 
@@ -134,6 +140,8 @@ const UserState = ({ children }) => {
     auth.signOut() // Llamada a Firebase para cerrar sesión
       .then(() => {
         setUsuario(null);
+        setUserData(null);
+        localStorage.removeItem("userData");
       })
       .catch(error => {
         console.error("Error al cerrar sesión: ", error);
@@ -143,7 +151,7 @@ const UserState = ({ children }) => {
 
   return (
 
-    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, registerOk, setPasswordSesion, setNombreRegister, setApellidoRegister, handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
+    <userContext.Provider value={{ setEmailRegister, setEmailSesion, setPasswordRegister, setPasswordSesion, setNombreRegister, setApellidoRegister, handleRegister, handleLogin, setUserData, userData, usuario, logout }}>
       {children}
     </userContext.Provider>
 
