@@ -32,7 +32,7 @@ const Register = () => {
     <form onSubmit={(e) => handleSubmit(e, "user")} style={{ marginBottom: "100px" }}>
       <h3>Registro de nuevo usuario</h3>
 
-      <div className="mb-3">
+      <div className="mb-3 text-start">
         <label>Nombre/s</label>
         <input
           type="text"
@@ -43,7 +43,7 @@ const Register = () => {
         />
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3 text-start">
         <label>Apellido/s</label>
         <input
           type="text"
@@ -53,18 +53,18 @@ const Register = () => {
         />
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3 text-start">
         <label>Email de registro</label>
         <input
           type="email"
           className="form-control"
-          placeholder="ejemp@gmail.com"
+          placeholder="ej@ejemplo.com"
           onChange={(e) => setEmailRegister(e.target.value)}
           required
         />
       </div>
 
-      <div className="mb-3">
+      <div className="mb-3 text-start">
         <label>Contraseña</label>
         <input
           type="password"
@@ -79,7 +79,7 @@ const Register = () => {
           Registrarse
         </button>
       </div>
-      <p className="forgot-password text-right">
+      <p className="mt-3 forgot-password text-right">
         Si ya estás registrado <a href="#" onClick={handleShow} style={{ color: 'blue', textDecoration: 'underline', cursor: 'pointer' }}>
           Inicia sesión
         </a>

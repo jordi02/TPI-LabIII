@@ -6,12 +6,12 @@ const Footer = () => {
 
     <div className="Footer">
       <div className="container">
+        <div className="footer-divider"></div>
         <div className="row">
           <div className="col-md-6 ft-1">
             <p>© 2024 PUROHABITO, Nutricion</p>
           </div>
           <div className="col-md-6 ft-3">
-            <h5>Seguinos</h5>
             <div className="footer-icons">
               <i className="fa-brands fa-facebook"></i>
               <i className="fa-brands fa-twitter"></i>

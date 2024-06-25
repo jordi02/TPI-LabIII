@@ -3,19 +3,20 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import NavBar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
-import Register from "./components/register/Register";
-import AdminLogic from "./components/adminItems/AdminLogic";
-import PrivateRoute from "./components/privateRoute/PrivateRoute";
-import Cart from "./components/cart/Cart";
-import Contact from "./components/contact/Contact";
-//import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
+import ItemListContainer from "./components/itemList/ItemListContainer";
 import ItemDetail from "./components/itemDetail/ItemDetail";
+import Us from "./components/us/Us";
+import Contact from "./components/contact/Contact";
+import Register from "./components/register/Register";
+import Cart from "./components/cart/Cart";
+import CartProvider from "./components/CartContext";
+import AdminLogic from "./components/adminItems/AdminLogic";
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
+import PrivateRoute from "./components/privateRoute/PrivateRoute";
+//import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ItemListContainer from "./components/itemList/ItemListContainer";
-import CartProvider from "./components/CartContext";
 
 function App() {
 
@@ -28,10 +29,11 @@ function App() {
           <main className="main-content">
           <Routes>
             <Route index path="/" element={<ItemListContainer />} />
+            <Route path="/item/:id" element={<ItemDetail />} />
+            <Route path="/us" element={<Us />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
             <Route path="/cart" element={<Cart />} />
-            <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="/AdminLogic" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
             <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
             <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>} />
