@@ -4,6 +4,7 @@ import { CartContext } from "../CartContext";
 import { userContext } from "../userState/StateComponent";
 import { useNavigate } from "react-router-dom";
 import Login from "../login/Login";
+import "./Cart.css"; // Importar el archivo CSS
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
@@ -25,54 +26,54 @@ const Cart = () => {
   };
 
   return (
-    <>
+    <div className="cart-container">
       {cartItems.length === 0 ? (
         <a className="nav-link nop" href="/">
           No hay productos! Agrega alguno
         </a>
       ) : (
         <>
-          <ul>
+          <ul className="list-unstyled">
             {cartItems.map(({ item, quantity }) => (
-              <div key={item.id} className="card" style={{ width: "20rem" }}>
+              <li key={item.id} className="card mb-3">
                 <img
                   className="card-img-top"
                   src={item.pictureUrl}
-                  alt="Card image cap"
+                  alt="Imagen del producto"
                 />
                 <div className="card-body d-flex flex-column justify-content-center">
                   <h4 className="card-title">{item.title}</h4>
-                  <h5 className="card-text">{`Llevas ${quantity}`}</h5>
-                  <p className="card-text">{`$${item.price * quantity}`}</p>
+                  <h5 className="card-text">{`Cantidad: ${quantity}`}</h5>
+                  <p className="card-text">{`Precio: $${item.price * quantity}`}</p>
+                  <button
+                    className="btn btn-dark"
+                    onClick={() => removeItem(item.id)}
+                  >
+                    Eliminar
+                  </button>
                 </div>
-                <button
-                  className="btn btn-dark"
-                  onClick={() => removeItem(item.id)}
-                >
-                  Eliminar
-                </button>
-              </div>
+              </li>
             ))}
           </ul>
-          <button className="btn btn-dark" onClick={() => clear()}>
+          <button className="btn btn-clear" onClick={() => clear()}>
             Vaciar Carrito
           </button>
           {usuario ? (
-            <form onSubmit={handleSubmit} className="form">
+            <form onSubmit={handleSubmit} className="form mt-3">
               <p>Datos del Usuario:</p>
               <p>{`Nombre: ${userData?.firstName}`}</p>
               <p>{`Email: ${userData?.email}`}</p>
-              <button type="submit" className="btn btn-dark">
+              <p className="total-price">{`Total: $${totalPrice}`}</p>
+              <button type="submit" className="btn btn-dark mt-3">
                 Enviar pedido
               </button>
             </form>
           ) : (
             <Login />
           )}
-          <h1 className="bg-dark text-white">{`El total es $${totalPrice}`}</h1>
         </>
       )}
-    </>
+    </div>
   );
 };
 
