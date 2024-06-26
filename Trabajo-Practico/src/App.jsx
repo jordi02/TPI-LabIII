@@ -13,6 +13,7 @@ import CartProvider from "./components/CartContext";
 import AdminLogic from "./components/adminItems/AdminLogic";
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
+import Orders from "./components/orders/Orders";
 //import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
@@ -29,11 +30,13 @@ function App() {
           <main className="main-content">
           <Routes>
             <Route index path="/" element={<ItemListContainer />} />
+            
             <Route path="/item/:id" element={<ItemDetail />} />
             <Route path="/us" element={<Us />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
             <Route path="/cart" element={<Cart />} />
+            <Route path="/orders" element={<Orders />} />
             <Route path="/AdminLogic" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
             <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
             <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>} />

@@ -1,3 +1,4 @@
+// NavBar.jsx
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -5,12 +6,11 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import Button from "react-bootstrap/Button";
 import Carrito from "../../assets/navbar/car.png";
 import Login from "../login/Login";
-import { Outlet, useNavigate } from "react-router-dom";
+import { Outlet, useNavigate, Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { userContext } from "../userState/StateComponent";
-import { Link } from "react-router-dom";
-function NavBar() {
 
+function NavBar() {
   const { userData, usuario, logout } = useContext(userContext);
   const navigate = useNavigate();
 
@@ -30,7 +30,6 @@ function NavBar() {
 
         <Nav.Link href="/us">Sobre nosotros</Nav.Link>
 
-        {/* Botón Productos */}
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
@@ -63,15 +62,15 @@ function NavBar() {
                 </p>
                 {userData && userData.role && userData.role.includes('admin') && !userData.role.includes('superadmin') && (
                   <Button className="m-1"
-                  size="sm"
-                  variant="outline-secondary"
-                  onClick={() => navigate('/AdminLogic')}>Administrar items</Button>
+                    size="sm"
+                    variant="outline-secondary"
+                    onClick={() => navigate('/AdminLogic')}>Administrar items</Button>
                 )}
                 {userData && userData.role && userData.role.includes('superadmin') && (
                   <Button className="m-1"
-                  size="sm"
-                  variant="outline-secondary"
-                  onClick={() => navigate('/SuperAdmin')}>Administrar usuarios</Button>
+                    size="sm"
+                    variant="outline-secondary"
+                    onClick={() => navigate('/SuperAdmin')}>Administrar usuarios</Button>
                 )}
                 <Button
                   className="m-1"
@@ -81,22 +80,23 @@ function NavBar() {
                 >
                   Cerrar sesion
                 </Button>
+                <Link to="/orders">
+                  <Button className="m-1" size="sm" variant="outline-secondary">
+                    Mis Compras
+                  </Button>
+                </Link>
               </>
             ) : (
               <>
-                {/* Botón Registrarse */}
                 <Button className="m-1" size="sm" variant="outline-secondary">
                   <Nav.Link href="/register">Registrarse</Nav.Link>
                 </Button>
-
-                {/* Botón Inicio de sesión */}
                 <Login />
               </>
             )}
 
-            {/* Botón Carrito */}
             <Navbar.Brand href="#home">
-            <Link to="/cart">
+              <Link to="/cart">
                 <img
                   src={Carrito}
                   width="30"
