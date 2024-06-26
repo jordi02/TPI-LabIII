@@ -45,7 +45,7 @@ const UserState = ({ children }) => {
     } catch (error) {
 
       console.log(error.message);
-      toast.error(error.message, {
+      toast.error("Error al registrarse", {
         position: "bottom-center",
 
       });
@@ -71,7 +71,7 @@ const UserState = ({ children }) => {
       await signInWithEmailAndPassword(auth, emailSesion, passwordSesion);
       const usuarioSesion = auth.currentUser;
       console.log("El usuario se registró existosamente!");
-      toast.success("El usuario se registró existosamente!", {
+      toast.success("Sesión iniciada exitosamente", {
         position: "top-center",
 
       });
@@ -90,7 +90,7 @@ const UserState = ({ children }) => {
 
     } catch (error) {
       console.log(error.message);
-      toast.error(error.message, {
+      toast.error("Error iniciando sesión", {
         position: "bottom-center"
       });
 

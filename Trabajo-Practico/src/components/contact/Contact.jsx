@@ -1,19 +1,22 @@
-import React, { useState } from "react";
 import "./Contact.css";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Contact = () => {
-  const [showAlert, setShowAlert] = useState(false);
+ 
   const navigate = useNavigate();
 
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevenir el comportamiento predeterminado de envío de formulario
-    setShowAlert(true);
-    setTimeout(() => {
-      setShowAlert(false);
-      //navigate('/');
-    }, 3000); // Ocultar la alerta después de 3 segundos
+  const handleSubmit = (e) => {
+    
+    e.preventDefault();
+    toast.success("Consulta enviada exitosamente!", {
+      position: "top-center",
+    });
+      navigate('/');
+    
   };
+
+
 
   return (
     <>
@@ -26,12 +29,7 @@ const Contact = () => {
         <div className="row justify-content-center">
           <div className="col-md-8">
             <div className="form-background p-4">
-              {showAlert && (
-                <div className="alert alert-secondary" role="alert">
-                  ¡Consulta enviada con éxito!
-                </div>
-              )}
-              <form className="row g-3 needs-validation" noValidate onSubmit={handleSubmit}>
+              <form className="row g-3 needs-validation" onSubmit={handleSubmit}>
                 <div className="col-md-6">
                   <label htmlFor="validationCustom01" className="form-label" style={{ textAlign: 'left', display: 'block', width: '100%' }}>Nombre</label>
                   <input type="text" className="form-control" id="validationCustom01" placeholder="Tu nombre..." required />
@@ -100,8 +98,12 @@ const Contact = () => {
           </div>
         </div>
       </div>
+
     </>
   );
 }
 
 export default Contact;
+
+
+
