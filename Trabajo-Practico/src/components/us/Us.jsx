@@ -1,4 +1,6 @@
 import Uno from "../../assets/us/1.jpg";
+import Dos from "../../assets/us/2.png";
+import Tres from "../../assets/us/3.jpeg";
 import "./Us.css";
 
 function Us() {
@@ -14,8 +16,8 @@ function Us() {
 
             <section className="features">
                 <div className="container">
-                    <h2>Servicios</h2>
-                    <div className="row">
+                    <h2 className="row mt-4 justify-content-center">Servicios</h2>
+                    <div className="row mt-4">
                         <div className="col-md-4">
                             <div className="feature-container">
                                 <img src={Uno} alt="Feature 1" className="feature-image" />
@@ -24,15 +26,15 @@ function Us() {
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="feature">
-                                <img src="feature2.png" alt="Feature 2" />
+                            <div className="feature-container">
+                                <img src={Dos} alt="Feature 2" className="feature-image" />
                                 <h3>Venta de suplementos</h3>
                                 <p>Estamos aquí para ofrecerte el apoyo que necesitas para alcanzar tus metas deportivas y llevar un estilo de vida activo y saludable.</p>
                             </div>
                         </div>
                         <div className="col-md-4">
-                            <div className="feature">
-                                <img src="feature3.png" alt="Feature 3" />
+                            <div className="feature-container">
+                                <img src={Tres} alt="Feature 2" className="feature-image" />
                                 <h3>Asesoramiento en la compra</h3>
                                 <p>No solo nos comprometemos a proporcionarte productos de alta calidad, sino también a compartir nuestro conocimiento y experiencia para ayudarte a tomar decisiones informadas sobre el consumo y adquisicion de los suplementos.</p>
                             </div>
@@ -47,13 +49,13 @@ function Us() {
                     <div className="row">
                         <div className="col-md-6">
                             <div className="testimonial">
-                                <p>Zendesk nos ha ayudado a reducir nuestro tiempo de respuesta a los tickets en un 50% y aumentar nuestra tasa de satisfacción del cliente en un 10%.</p>
+                                <p className="mt-3" style={{ fontStyle: 'italic' }}>El asesoramiento en la compra y consumo de suplementos en PUROHABITO es de primera clase. Siempre he tenido dudas sobre qué productos son los mejores para mis objetivos de fitness, pero el equipo aquí es increíblemente conocedor y me ha guiado a través de cada paso del proceso. Gracias por su ayuda</p>
                                 <p><strong>John Doe</strong>, CEO de Acme Corporation</p>
                             </div>
                         </div>
                         <div className="col-md-6">
                             <div className="testimonial">
-                                <p>Zendesk es una herramienta esencial para nuestro negocio. Nos ha ayudado a mejorar la comunicación con nuestros clientes y a resolver problemas de manera más eficiente.</p>
+                                <p className="mt-3" style={{ fontStyle: 'italic' }}>La atención nutricional en PUROHABITO es simplemente excelente. Desde que comencé a trabajar con sus nutricionistas especializados en deporte, he visto una mejora significativa en mi rendimiento y bienestar general. Ellos realmente entienden las necesidades específicas de los atletas y me han proporcionado un plan de nutrición personalizado que ha marcado la diferencia en mi entrenamiento y competencia. ¡Altamente recomendados!</p>
                                 <p><strong>Jane Smith</strong>, Directora de atención al cliente de ABC Company</p>
                             </div>
                         </div>
@@ -63,8 +65,8 @@ function Us() {
 
             <section className="call-to-action">
                 <div className="container">
-                    <h2>Comienza tu prueba gratuita hoy mismo</h2>
-                    <p>Experimenta la potencia de Zendesk y descubre cómo puede ayudarte a mejorar tu experiencia de cliente.</p>
+                    <h2 className="mt-4">Comienza con nosotros hoy mismo</h2>
+                    <p style={{ fontWeight: "bold" }}>Experimenta la potencia de PUROHABITO y descubre cómo puede ayudarte a mejorar tu rendimiento deportivo.</p>
                     <a href="#" className="btn"></a>
                 </div>
             </section>
