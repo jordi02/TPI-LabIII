@@ -1,16 +1,15 @@
+// Cart.jsx
 import React, { useContext, useEffect, useState } from "react";
 import { CartContext } from "../CartContext";
+import { userContext } from "../userState/StateComponent";
+import { useNavigate } from "react-router-dom";
+import Login from "../login/Login";
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);
   const { cartItems, sendOrder, clear, removeItem } = useContext(CartContext);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const inputs = document.getElementsByTagName("input");
-    const data = Array.from(inputs).map((input, index) => input.value);
-    sendOrder(totalPrice, { name: data[0], mail: data[1], phone: data[2] });
-  };
+  const { userData, usuario } = useContext(userContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let total = 0;
@@ -19,6 +18,11 @@ const Cart = () => {
     });
     setTotalPrice(total);
   }, [cartItems]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    sendOrder(totalPrice, { name: userData?.firstName, email: userData?.email });
+  };
 
   return (
     <>
@@ -53,15 +57,18 @@ const Cart = () => {
           <button className="btn btn-dark" onClick={() => clear()}>
             Vaciar Carrito
           </button>
-          <form onSubmit={handleSubmit} className="form">
-            <label htmlFor="">Ingrese sus datos:</label>
-            <input type="text" placeholder="Nombre" />
-            <input type="email" placeholder="Email@" />
-            <input type="tel" placeholder="Telefono" />
-            <button type="submit" className="btn btn-dark">
-              Enviar pedido
-            </button>
-          </form>
+          {usuario ? (
+            <form onSubmit={handleSubmit} className="form">
+              <p>Datos del Usuario:</p>
+              <p>{`Nombre: ${userData?.firstName}`}</p>
+              <p>{`Email: ${userData?.email}`}</p>
+              <button type="submit" className="btn btn-dark">
+                Enviar pedido
+              </button>
+            </form>
+          ) : (
+            <Login />
+          )}
           <h1 className="bg-dark text-white">{`El total es $${totalPrice}`}</h1>
         </>
       )}

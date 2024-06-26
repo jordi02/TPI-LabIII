@@ -8,7 +8,7 @@ import Login from "../login/Login";
 import { Outlet, useNavigate } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { userContext } from "../userState/StateComponent";
-
+import { Link } from "react-router-dom";
 function NavBar() {
 
   const { userData, usuario, logout } = useContext(userContext);
@@ -96,7 +96,7 @@ function NavBar() {
 
             {/* Botón Carrito */}
             <Navbar.Brand href="#home">
-              <Nav.Link href="/cart">
+            <Link to="/cart">
                 <img
                   src={Carrito}
                   width="30"
@@ -104,7 +104,7 @@ function NavBar() {
                   className="d-inline-block align-top"
                   alt="carrito"
                 />
-              </Nav.Link>
+              </Link>
             </Navbar.Brand>
           </Nav>
         </Navbar.Collapse>
