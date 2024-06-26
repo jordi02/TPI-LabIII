@@ -1,54 +1,55 @@
+/* Footer.css */
 .Footer {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
     background-color: #000000;
     padding: 2rem;
-    z-index: 1000;
-}
-
-.footer-divider {
+    color: #ffffff;
+    width: 100%;
+    border: 0;
+    position: relative;
+  }
+  
+  .footer-divider {
     margin: 0 auto;
     width: calc(100% - 0cm); /* Ajusta el ancho para 4 cm de espacio a cada lado */
     border-top: 1px solid #4d4d4d;
     margin-bottom: 1rem; /* Ajusta el margen inferior */
-}
-
-.ft-1 p {
+  }
+  
+  .ft-1 p {
     margin: 0;
     padding-right: 2cm; /* Alinea con el inicio de la línea */
-    color: #ffffff;
     margin-top: 0.5rem; /* Ajusta el margen superior */
-}
-
-.ft-3 {
+  }
+  
+  .ft-3 {
     display: flex;
     justify-content: flex-end;
-}
-
-.footer-icons {
+  }
+  
+  .footer-icons {
     width: calc(100% - 8cm); /* Ajusta el ancho para 4 cm de espacio a cada lado */
     display: flex;
     justify-content: flex-end;
     margin-top: 0.5rem; /* Ajusta el margen superior */
     margin-right: 4cm; /* Alinea con el final de la línea */
-}
-
-.footer-icons i {
+  }
+  
+  .footer-icons i {
     padding: 0.4rem 0.5rem;
     background: #e1e1e1;
     color: #000000;
     margin: 0 0.5rem;
     border-radius: 50%;
-}
-
-.footer-icons i:hover {
+  }
+  
+  .footer-icons i:hover {
     background: #a4a4a4;
     color: #fff;
     transition: 0.6s;
     cursor: pointer;
-}
+  }
+  
+  
 
 
 
