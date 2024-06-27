@@ -38,13 +38,13 @@ function NavBar() {
           <NavDropdown.Item as={Link} to="/proteins">
             Proteinas
           </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/creatinas">
+          <NavDropdown.Item as={Link} to="/creatins">
             Creatinas
           </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/multivitaminicos">
+          <NavDropdown.Item as={Link} to="/multivitamins">
             Multivitaminicos
           </NavDropdown.Item>
-          <NavDropdown.Item as={Link} to="/otros">
+          <NavDropdown.Item as={Link} to="/others">
             Otros
           </NavDropdown.Item>
         </NavDropdown>
@@ -57,9 +57,10 @@ function NavBar() {
             </Nav.Link>
             {usuario && (
               <Nav.Link as={Link} to="/orders">
-                Mis Compras
+                {userData && userData.role && (userData.role.includes("admin") || userData.role.includes("superadmin")) ? "Compras" : "Mis Compras"}
               </Nav.Link>
             )}
+
           </Nav>
           <Nav>
             {usuario ? (

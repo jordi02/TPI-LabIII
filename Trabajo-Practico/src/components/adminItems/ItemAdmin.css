@@ -9,23 +9,38 @@ body {
     padding: 80px 0;
 }
 
+.button-group {
+    display: flex;
+    justify-content: center;
+    gap: 5px; /* Ajusta este valor para cambiar el espacio entre botones */
+  }
+  
+  .button-group button {
+    margin-right: 0; /* Elimina el margen derecho de los botones dentro del grupo */
+  }
+
 .wsk-cp-product {
     width: 300px;
-    height: auto; /* Ajustar la altura automáticamente */
+    height: auto;
+    /* Ajustar la altura automáticamente */
     background: #fff;
     padding: 10px;
     border-radius: 6px;
     box-shadow: 4px 6px rgba(0, 0, 0, 0.12), 0 3px 4px rgba(0, 0, 0, 0.24);
     position: relative;
     margin: 20px auto;
-    text-align: center; /* Centrar contenido */
+    text-align: center;
+    /* Centrar contenido */
 }
 
 .wsk-cp-img {
-    position: relative; /* Cambiar a relativo */
+    position: relative;
+    /* Cambiar a relativo */
     width: 100%;
-    padding: 0; /* Quitar padding */
-    margin-bottom: 15px; /* Agregar margen inferior */
+    padding: 0;
+    /* Quitar padding */
+    margin-bottom: 15px;
+    /* Agregar margen inferior */
     transition: all 0.2s ease-in-out;
 }
 
@@ -36,7 +51,8 @@ body {
 }
 
 .wsk-cp-product:hover .wsk-cp-img {
-    top: 0; /* Quitar desplazamiento hacia arriba */
+    top: 0;
+    /* Quitar desplazamiento hacia arriba */
 }
 
 .wsk-cp-product:hover .wsk-cp-img img {
@@ -44,7 +60,8 @@ body {
 }
 
 .wsk-cp-text {
-    padding-top: 0; /* Quitar padding superior */
+    padding-top: 0;
+    /* Quitar padding superior */
 }
 
 .wsk-cp-text .title-product {
@@ -66,14 +83,19 @@ body {
     height: 100%;
     padding: 5px;
     border-top: 1px solid #ddd;
-    display: flex; /* Usar flexbox */
-    justify-content: space-between; /* Espaciar elementos */
-    align-items: center; /* Alinear verticalmente */
+    display: flex;
+    /* Usar flexbox */
+    justify-content: space-between;
+    /* Espaciar elementos */
+    align-items: center;
+    /* Alinear verticalmente */
 }
 
 .wcf-right {
-    display: flex; /* Usar flexbox */
-    gap: 5px; /* Espaciado entre botones */
+    display: flex;
+    /* Usar flexbox */
+    gap: 5px;
+    /* Espaciado entre botones */
 }
 
 .price {
@@ -101,28 +123,34 @@ body {
 }
 
 .edit-btn {
-    background-color: #007bff; /* Color azul */
+    background-color: #007bff;
+    /* Color azul */
     border-color: #007bff;
-    margin-left: 5px; /* Espaciado entre botones */
+    margin-left: 5px;
+    /* Espaciado entre botones */
 }
 
 .edit-btn:hover,
 .edit-btn:focus,
 .edit-btn:active {
-    background-color: #0056b3; /* Color azul oscuro en hover */
+    background-color: #0056b3;
+    /* Color azul oscuro en hover */
     border-color: #004085;
 }
 
 .delete-btn {
-    background-color: #dc3545; /* Color rojo */
+    background-color: #dc3545;
+    /* Color rojo */
     border-color: #dc3545;
-    margin-left: 5px; /* Espaciado entre botones */
+    margin-left: 5px;
+    /* Espaciado entre botones */
 }
 
 .delete-btn:hover,
 .delete-btn:focus,
 .delete-btn:active {
-    background-color: #c82333; /* Color rojo oscuro en hover */
+    background-color: #c82333;
+    /* Color rojo oscuro en hover */
     border-color: #bd2130;
 }
 

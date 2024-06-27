@@ -32,7 +32,7 @@ const AdminLogic = () => {
 
   // Agregar nuevo producto
   const [showAddForm, setShowAddForm] = useState(false); // Estado para mostrar el formulario de agregar producto
-  const [newProduct, setNewProduct] = useState({ title: "", pictureUrl: "", price: "", description: "" }); // Estado para manejar los valores del formulario de nuevo producto
+  const [newProduct, setNewProduct] = useState({ title: "", pictureUrl: "", price: "", detail: "", stock: "", category: "" }); // Estado para manejar los valores del formulario de nuevo producto
 
   const handleAddChange = (e) => {
     const { name, value } = e.target;
@@ -49,7 +49,7 @@ const AdminLogic = () => {
       await addDoc(itemsCollection, newProduct);
       alert("Producto agregado con éxito");
       setShowAddForm(false); // Ocultar el formulario de agregar producto
-      setNewProduct({ title: "", pictureUrl: "", price: "", description: "" }); // Limpiar el formulario
+      setNewProduct({ title: "", pictureUrl: "", price: "", detail: "", stock: "", category: "" }); // Limpiar el formulario
       const snapshot = await getDocs(itemsCollection);
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setItems(data); // Actualizar la lista de productos
@@ -61,12 +61,12 @@ const AdminLogic = () => {
 
   //Editar items
   const [editItem, setEditItem] = useState(null); // Estado para manejar el ítem en edición
-  const [editValues, setEditValues] = useState({ title: "", price: "" }); // Estado para manejar los valores del formulario
+  const [editValues, setEditValues] = useState({ title: "", pictureUrl: "", price: "", detail: "", stock: "" }); // Estado para manejar los valores del formulario
 
   // Función para manejar el inicio de la edición
   const handleEdit = (item) => {
     setEditItem(item.id);
-    setEditValues({ title: item.title, price: item.price });
+    setEditValues({ title: item.title, pictureUrl: item.pictureUrl, price: item.price, detail: item.detail, stock: item.stock });
   };
 
   // Función para manejar el cambio de los valores del formulario
@@ -85,12 +85,23 @@ const AdminLogic = () => {
       const itemDoc = doc(db, "Products", id);
       await updateDoc(itemDoc, {
         title: editValues.title,
+        pictureUrl: editValues.pictureUrl,
         price: editValues.price,
+        detail: editValues.detail,
+        stock: editValues.stock,
       });
       alert("Producto actualizado con éxito");
+  
+      // Actualiza el estado de items localmente
+      setItems((prevItems) =>
+        prevItems.map((item) =>
+          item.id === id
+            ? { ...item, ...editValues }
+            : item
+        )
+      );
+  
       setEditItem(null); // Salir del modo de edición
-      updateDelete(id); // Actualiza la lista después de la edición
-
     } catch (error) {
       console.error("Error actualizando el producto: ", error);
       alert("Error actualizando el producto");

@@ -6,10 +6,7 @@ import "./ItemAdmin.css";
 
 const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddChange, handleAddProduct, handleDelete, handleEdit, handleChange, handleSave, editItem, setEditItem, editValues }) => {
 
-  //const { title, price, pictureUrl, id } = item;
-
   return (
-
     <>
       <div className="mt-5">
         <button onClick={() => setShowAddForm(!showAddForm)}>
@@ -32,7 +29,7 @@ const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddCh
               placeholder="URL de la imagen"
             />
             <input
-              type="text"
+              type="number"
               name="price"
               value={newProduct.price}
               onChange={handleAddChange}
@@ -40,10 +37,24 @@ const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddCh
             />
             <input
               type="text"
-              name="description"
-              value={newProduct.description}
+              name="detail"
+              value={newProduct.detail}
               onChange={handleAddChange}
               placeholder="Descripción"
+            />
+            <input
+              type="number"
+              name="stock"
+              value={newProduct.stock}
+              onChange={handleAddChange}
+              placeholder="Stock"
+            />
+            <input
+              type="text"
+              name="category"
+              value={newProduct.category}
+              onChange={handleAddChange}
+              placeholder="Categoria"
             />
             <button onClick={handleAddProduct}>Guardar</button>
           </div>
@@ -73,16 +84,30 @@ const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddCh
                               />
                               <input
                                 type="text"
+                                name="pictureUrl"
+                                value={editValues.pictureUrl}
+                                onChange={handleChange}
+                              />
+                              <input
+                                type="number"
                                 name="price"
                                 value={editValues.price}
                                 onChange={handleChange}
                               />
-                              <Button variant="success" onClick={() => handleSave(item.id)}>
-                                Guardar
-                              </Button>
-                              <Button variant="secondary" onClick={() => setEditItem(null)}>
-                                Cancelar
-                              </Button>
+                              <input
+                                type="number"
+                                name="stock"
+                                value={editValues.stock}
+                                onChange={handleChange}
+                              />
+                              <div className="button-group">
+                                <Button variant="success" onClick={() => handleSave(item.id)}>
+                                  Guardar
+                                </Button>
+                                <Button variant="secondary" onClick={() => setEditItem(null)}>
+                                  Cancelar
+                                </Button>
+                              </div>
                             </div>
                           ) : (
                             <>
@@ -114,7 +139,6 @@ const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddCh
       </div>
     </>
   );
-
 };
 
 ItemAdmin.propTypes = {
@@ -123,3 +147,5 @@ ItemAdmin.propTypes = {
 };
 
 export default ItemAdmin;
+
+
