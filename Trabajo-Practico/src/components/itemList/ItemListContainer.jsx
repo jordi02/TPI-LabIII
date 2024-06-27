@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import Item from "../item/Item";
-import Cinco from "../../assets/itemListContainer/5.jpg";
-import Seis from "../../assets/itemListContainer/6.jpeg";
 import Siete from "../../assets/itemListContainer/7.jpg";
 import Ocho from "../../assets/itemListContainer/8.jpg";
+import Nueve from "../../assets/itemListContainer/9.jpg";
+import Diez from "../../assets/itemListContainer/10.jpg";
 import './ItemListContainer.css';
 //Modulos Firebase
 import { getFirestore, collection, getDocs } from "firebase/firestore";
@@ -44,14 +44,14 @@ const ItemListContainer = () => {
         </div>
         <div className="carousel-inner ">
           <div className="carousel-item active">
-            <img src={Cinco} className="d-block w-100" alt="..." />
+            <img src={Nueve} className="d-block w-100" alt="..." />
             <div className="carousel-caption d-none d-md-block" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", padding: "10px", borderRadius: "5px", margin: "0 auto", maxWidth: "50%"}}>
               <h5>Consulta nutricional</h5>
               <p>Ofrecemos consultas online y presenciales para tu comodidad y conveniencia.</p>
             </div>
           </div>
           <div className="carousel-item">
-            <img src={Seis} className="d-block w-100" alt="..." />
+            <img src={Diez} className="d-block w-100" alt="..." />
             <div className="carousel-caption d-none d-md-block" style={{ backgroundColor: "rgba(0, 0, 0, 0.5)", padding: "10px", borderRadius: "5px", margin: "0 auto", maxWidth: "50%"}}>
               <h5>Libro disponible</h5>
               <p>Adquirilo en nuestra tienda y obtené descuentos exclusivos</p>
