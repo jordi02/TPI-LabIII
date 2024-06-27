@@ -26,23 +26,40 @@ function NavBar() {
   return (
     <Navbar collapseOnSelect expand="lg" className="bg-body-tertiary fixed-top">
       <Container fluid>
-        <Navbar.Brand href="/">PUROHABITO</Navbar.Brand>
+        <Navbar.Brand as={Link} to="/">
+          PUROHABITO
+        </Navbar.Brand>
 
-        <Link to="/us">Sobre nosotros</Link>
+        <Nav.Link as={Link} to="/us">
+          Sobre nosotros
+        </Nav.Link>
 
         <NavDropdown title="Productos" id="basic-nav-dropdown" className="mr-3">
-          <NavDropdown.Item href="/proteins">Proteinas</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Creatinas</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">
+          <NavDropdown.Item as={Link} to="/proteins">
+            Proteinas
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/creatinas">
+            Creatinas
+          </NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/multivitaminicos">
             Multivitaminicos
           </NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Otros</NavDropdown.Item>
+          <NavDropdown.Item as={Link} to="/otros">
+            Otros
+          </NavDropdown.Item>
         </NavDropdown>
 
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/contact">Contacto</Nav.Link>
+            <Nav.Link as={Link} to="/contact">
+              Contacto
+            </Nav.Link>
+            {usuario && (
+              <Nav.Link as={Link} to="/orders">
+                Mis Compras
+              </Nav.Link>
+            )}
           </Nav>
           <Nav>
             {usuario ? (
@@ -90,22 +107,23 @@ function NavBar() {
                 >
                   Cerrar sesion
                 </Button>
-                <Link to="/orders">
-                  <Button className="m-1" size="sm" variant="outline-secondary">
-                    Mis Compras
-                  </Button>
-                </Link>
               </>
             ) : (
               <>
-                <Button className="m-1" size="sm" variant="outline-secondary">
-                  <Nav.Link href="/register">Registrarse</Nav.Link>
+                <Button
+                  as={Link}
+                  to="/register"
+                  className="m-1"
+                  size="sm"
+                  variant="outline-secondary"
+                >
+                  Registrarse
                 </Button>
                 <Login />
               </>
             )}
 
-            <Navbar.Brand href="#home">
+            <Navbar.Brand>
               <Link to="/cart">
                 <img
                   src={Carrito}
