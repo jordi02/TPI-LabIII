@@ -28,12 +28,14 @@ function NavBar() {
       <Container fluid>
         <Navbar.Brand href="/">PUROHABITO</Navbar.Brand>
 
-        <Nav.Link href="/us">Sobre nosotros</Nav.Link>
+        <Link to="/us">Sobre nosotros</Link>
 
         <NavDropdown title="Productos" id="basic-nav-dropdown" className="mr-3">
           <NavDropdown.Item href="/proteins">Proteinas</NavDropdown.Item>
           <NavDropdown.Item href="#action/3.2">Creatinas</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Multivitaminicos</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">
+            Multivitaminicos
+          </NavDropdown.Item>
           <NavDropdown.Item href="#action/3.3">Otros</NavDropdown.Item>
         </NavDropdown>
 
@@ -55,18 +57,31 @@ function NavBar() {
                 >
                   Hola {userData?.firstName}, bienvenido
                 </p>
-                {userData && userData.role && userData.role.includes('admin') && !userData.role.includes('superadmin') && (
-                  <Button className="m-1"
-                    size="sm"
-                    variant="outline-secondary"
-                    onClick={() => navigate('/AdminLogic')}>Administrar items</Button>
-                )}
-                {userData && userData.role && userData.role.includes('superadmin') && (
-                  <Button className="m-1"
-                    size="sm"
-                    variant="outline-secondary"
-                    onClick={() => navigate('/SuperAdmin')}>Administrar usuarios</Button>
-                )}
+                {userData &&
+                  userData.role &&
+                  userData.role.includes("admin") &&
+                  !userData.role.includes("superadmin") && (
+                    <Button
+                      className="m-1"
+                      size="sm"
+                      variant="outline-secondary"
+                      onClick={() => navigate("/AdminLogic")}
+                    >
+                      Administrar items
+                    </Button>
+                  )}
+                {userData &&
+                  userData.role &&
+                  userData.role.includes("superadmin") && (
+                    <Button
+                      className="m-1"
+                      size="sm"
+                      variant="outline-secondary"
+                      onClick={() => navigate("/SuperAdmin")}
+                    >
+                      Administrar usuarios
+                    </Button>
+                  )}
                 <Button
                   className="m-1"
                   size="sm"

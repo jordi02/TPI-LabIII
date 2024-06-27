@@ -21,36 +21,53 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
-
   return (
-
     <>
       <CartProvider>
         <BrowserRouter>
           <NavBar />
           <main className="main-content">
-          <Routes>
-            <Route index path="/" element={<ItemListContainer />} />
-            <Route path="/item/:id" element={<ItemDetail />} />
-            <Route path="/proteins" element={<Proteins />} />
-            <Route path="/us" element={<Us />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/orders" element={<Orders />} />
-            <Route path="/AdminLogic" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
-            <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>} />
-            <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>} />
-          </Routes>
+            <Routes>
+              <Route index path="/" element={<ItemListContainer />} />
+              <Route path="/item/:id" element={<ItemDetail />} />
+              <Route path="/proteins" element={<Proteins />} />
+              <Route path="/us" element={<Us />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/register" element={<Register />} />
+              <Route path="/cart" element={<Cart />} />
+              <Route path="/orders" element={<Orders />} />
+              <Route
+                path="/AdminLogic"
+                element={
+                  <PrivateRoute>
+                    <AdminLogic />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/edit/:id"
+                element={
+                  <PrivateRoute>
+                    <AdminLogic />
+                  </PrivateRoute>
+                }
+              />
+              <Route
+                path="/SuperAdmin"
+                element={
+                  <PrivateRoute>
+                    <SuperAdmin />
+                  </PrivateRoute>
+                }
+              />
+            </Routes>
           </main>
           <ToastContainer />
           <Footer />
         </BrowserRouter>
       </CartProvider>
     </>
-    
   );
-  
 }
 
 export default App;
