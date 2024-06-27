@@ -30,6 +30,13 @@ function NavBar() {
 
         <Nav.Link href="/us">Sobre nosotros</Nav.Link>
 
+        <NavDropdown title="Productos" id="basic-nav-dropdown" className="mr-3">
+          <NavDropdown.Item href="/proteins">Proteinas</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.2">Creatinas</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Multivitaminicos</NavDropdown.Item>
+          <NavDropdown.Item href="#action/3.3">Otros</NavDropdown.Item>
+        </NavDropdown>
+
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">

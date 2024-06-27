@@ -5,6 +5,7 @@ import NavBar from "./components/navbar/Navbar";
 import Footer from "./components/footer/Footer";
 import ItemListContainer from "./components/itemList/ItemListContainer";
 import ItemDetail from "./components/itemDetail/ItemDetail";
+import Proteins from "./components/products/Proteins";
 import Us from "./components/us/Us";
 import Contact from "./components/contact/Contact";
 import Register from "./components/register/Register";
@@ -30,8 +31,8 @@ function App() {
           <main className="main-content">
           <Routes>
             <Route index path="/" element={<ItemListContainer />} />
-            
             <Route path="/item/:id" element={<ItemDetail />} />
+            <Route path="/proteins" element={<Proteins />} />
             <Route path="/us" element={<Us />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/register" element={<Register />} />
