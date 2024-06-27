@@ -45,7 +45,7 @@ const Orders = () => {
                 <p className="card-text">Total: ${order.total}</p>
                 <ul>
                   {order.items.map((item, index) => (
-                    <li key={index}>{item.title} x {item.quantity}</li>
+                    <li key={index}>{item.item.title} x {item.quantity}</li>
                   ))}
                 </ul>
               </div>
