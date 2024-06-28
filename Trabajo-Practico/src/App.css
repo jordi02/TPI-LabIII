@@ -14,3 +14,33 @@ main {
   padding-bottom: 100px; /* Ajusta este valor según la altura de tu footer */
 }
 
+
+body {
+  background-color: #fff;
+  color: #000;
+}
+
+.navbar-light {
+  background-color: #f8f9fa;
+}
+
+.navbar-light .navbar-brand,
+.navbar-light .nav-link {
+  color: #000;
+}
+
+/* Tema Oscuro */
+[data-theme='dark'] body {
+  background-color: #121212;
+  color: #ffffff;
+}
+
+[data-theme='dark'] .navbar-dark {
+  background-color: #343a40;
+}
+
+[data-theme='dark'] .navbar-dark .navbar-brand,
+[data-theme='dark'] .navbar-dark .nav-link {
+  color: #ffffff;
+}
+
