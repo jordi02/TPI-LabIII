@@ -57,10 +57,14 @@ function NavBar() {
             </Nav.Link>
             {usuario && (
               <Nav.Link as={Link} to="/orders">
-                {userData && userData.role && (userData.role.includes("admin") || userData.role.includes("superadmin")) ? "Compras" : "Mis Compras"}
+                {userData &&
+                userData.role &&
+                (userData.role.includes("admin") ||
+                  userData.role.includes("superadmin"))
+                  ? "Compras"
+                  : "Mis Compras"}
               </Nav.Link>
             )}
-
           </Nav>
           <Nav>
             {usuario ? (
@@ -82,6 +86,13 @@ function NavBar() {
                     <Button
                       className="m-1"
                       size="sm"
+                      style={{
+                        backgroundColor: "#f8f9fa",
+                        color: "#000",
+                        border: "1px solid #ced4da",
+                        padding: "0.5rem 1rem",
+                        fontSize: "0.875rem", // Tamaño de fuente ajustado
+                      }}
                       variant="outline-secondary"
                       onClick={() => navigate("/AdminLogic")}
                     >
@@ -94,6 +105,13 @@ function NavBar() {
                     <Button
                       className="m-1"
                       size="sm"
+                      style={{
+                        backgroundColor: "#f8f9fa",
+                        color: "#000",
+                        border: "1px solid #ced4da",
+                        padding: "0.5rem 1rem",
+                        fontSize: "0.875rem", // Tamaño de fuente ajustado
+                      }}
                       variant="outline-secondary"
                       onClick={() => navigate("/SuperAdmin")}
                     >
@@ -103,10 +121,17 @@ function NavBar() {
                 <Button
                   className="m-1"
                   size="sm"
+                  style={{
+                    backgroundColor: "#f8f9fa",
+                    color: "#000",
+                    border: "1px solid #ced4da",
+                    padding: "0.5rem 1rem",
+                    fontSize: "0.875rem", // Tamaño de fuente ajustado
+                  }}
                   variant="outline-secondary"
                   onClick={() => handleLogout()}
                 >
-                  Cerrar sesion
+                  Cerrar sesión
                 </Button>
               </>
             ) : (
@@ -116,11 +141,26 @@ function NavBar() {
                   to="/register"
                   className="m-1"
                   size="sm"
+                  style={{
+                    backgroundColor: "#f8f9fa",
+                    color: "#000",
+                    border: "1px solid #ced4da",
+                    padding: "0.5rem 1rem",
+                    fontSize: "1rem", // Tamaño de fuente ajustado
+                  }}
                   variant="outline-secondary"
                 >
                   Registrarse
                 </Button>
-                <Login />
+                <Login
+                  style={{
+                    backgroundColor: "#f8f9fa",
+                    color: "#000",
+                    border: "1px solid #ced4da",
+                    padding: "0.5rem 1rem",
+                    fontSize: "1rem", // Tamaño de fuente ajustado
+                  }}
+                />
               </>
             )}
 

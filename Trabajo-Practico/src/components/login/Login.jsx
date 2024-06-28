@@ -5,22 +5,27 @@ import { useState, useContext } from "react";
 import { userContext } from "../userState/StateComponent";
 
 const Login = () => {
-
   // Estados mostrar/ocultar boton Iniciar sesion
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  
-  const { setEmailSesion, setPasswordSesion, handleLogin } = useContext(userContext);
+
+  const { setEmailSesion, setPasswordSesion, handleLogin } =
+    useContext(userContext);
 
   return (
-
     <>
-
       <Button
         className="m-1"
         size="sm"
         variant="outline-secondary"
+        style={{
+          backgroundColor: "#f8f9fa",
+          color: "#000",
+          border: "1px solid #ced4da",
+          padding: "0.5rem 1rem",
+          fontSize: "1rem", // Tamaño de fuente ajustado
+        }}
         onClick={handleShow}
       >
         Iniciar sesión
@@ -61,11 +66,8 @@ const Login = () => {
           </Button>
         </Modal.Footer>
       </Modal>
-
     </>
-
   );
+};
 
-}
-
-export default Login
+export default Login;
