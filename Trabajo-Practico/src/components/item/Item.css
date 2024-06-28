@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Muli:400,400i,700,700i');
-
+/* src/styles/Item.css */
 body {
     font-family: 'Muli', sans-serif;
     background: rgb(255, 255, 255);
@@ -11,21 +10,26 @@ body {
 
 .wsk-cp-product {
     width: 300px;
-    height: auto; /* Ajustar la altura automáticamente */
+    height: auto;
     background: #fff;
     padding: 10px;
     border-radius: 6px;
     box-shadow: 4px 6px rgba(0, 0, 0, 0.12), 0 3px 4px rgba(0, 0, 0, 0.24);
     position: relative;
     margin: 20px auto;
-    text-align: center; /* Centrar contenido */
+    text-align: center;
+}
+
+.wsk-cp-product.dark {
+    background: #333;
+    color: #fff;
 }
 
 .wsk-cp-img {
-    position: relative; /* Cambiar a relativo */
+    position: relative;
     width: 100%;
-    padding: 0; /* Quitar padding */
-    margin-bottom: 15px; /* Agregar margen inferior */
+    padding: 0;
+    margin-bottom: 15px;
     transition: all 0.2s ease-in-out;
 }
 
@@ -35,20 +39,12 @@ body {
     border-radius: 6px;
 }
 
-.wsk-cp-product:hover .wsk-cp-img {
-    top: 0; /* Quitar desplazamiento hacia arriba */
-}
-
 .wsk-cp-product:hover .wsk-cp-img img {
     box-shadow: 0 19px 38px rgba(0, 0, 0, 0.30), 0 15px 12px rgba(0, 0, 0, 0.22);
 }
 
 .wsk-cp-text {
-    padding-top: 0; /* Quitar padding superior */
-}
-
-.wsk-cp-text .title-product {
-    text-align: center;
+    padding-top: 0;
 }
 
 .wsk-cp-text .title-product h3 {
@@ -66,9 +62,9 @@ body {
     height: 100%;
     padding: 5px;
     border-top: 1px solid #ddd;
-    display: flex; /* Usar flexbox */
-    justify-content: space-between; /* Espaciar elementos */
-    align-items: center; /* Alinear verticalmente */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .price {
@@ -101,10 +97,9 @@ body {
     display: inline-block;
     margin: 0 5px;
 }
+
 @media screen and (max-width: 991px) {
     .wsk-cp-product {
         margin: 40px auto;
     }
-
-
 }

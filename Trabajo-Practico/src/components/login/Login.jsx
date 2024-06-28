@@ -4,15 +4,15 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { userContext } from "../userState/StateComponent";
-import useDarkMode from '../hooks/useDarkMode'; // Importa el hook de modo oscuro
-
+import useDarkMode from "../hooks/useDarkMode"; // Importa el hook de modo oscuro
 
 const Login = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
 
-  const { setEmailSesion, setPasswordSesion, handleLogin } = useContext(userContext);
+  const { setEmailSesion, setPasswordSesion, handleLogin } =
+    useContext(userContext);
   const [isDarkMode] = useDarkMode(); // Obtén el estado del modo oscuro
 
   return (
@@ -34,7 +34,10 @@ const Login = () => {
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton className={isDarkMode ? "bg-dark text-light" : ""}>
+        <Modal.Header
+          closeButton
+          className={isDarkMode ? "bg-dark text-light" : ""}
+        >
           <Modal.Title>Inicio de sesión</Modal.Title>
         </Modal.Header>
         <Modal.Body className={isDarkMode ? "bg-dark text-light" : ""}>
@@ -47,7 +50,9 @@ const Login = () => {
                 autoFocus
                 id="email"
                 onChange={(e) => setEmailSesion(e.target.value)}
-                className={isDarkMode ? "bg-dark text-light border-secondary" : ""}
+                className={
+                  isDarkMode ? "bg-dark text-light border-secondary" : ""
+                }
               />
             </Form.Group>
             <Form.Group className="mb-3">
@@ -56,22 +61,18 @@ const Login = () => {
                 type="password"
                 id="password"
                 onChange={(e) => setPasswordSesion(e.target.value)}
-                className={isDarkMode ? "bg-dark text-light border-secondary" : ""}
+                className={
+                  isDarkMode ? "bg-dark text-light border-secondary" : ""
+                }
               />
             </Form.Group>
           </Form>
         </Modal.Body>
         <Modal.Footer className={isDarkMode ? "bg-dark" : ""}>
-          <Button
-            variant="primary"
-            onClick={handleLogin}
-          >
+          <Button variant="primary" onClick={handleLogin}>
             Ingresar
           </Button>
-          <Button
-            variant="secondary"
-            onClick={handleClose}
-          >
+          <Button variant="secondary" onClick={handleClose}>
             Cerrar
           </Button>
         </Modal.Footer>
