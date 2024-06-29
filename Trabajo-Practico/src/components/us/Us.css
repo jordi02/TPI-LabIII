@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 300px; /* Ajusta el ancho según tus necesidades */
-    margin: 0 auto; /* Centra el contenedor horizontalmente */
+    width: 300px; 
+    margin: 0 auto; 
     padding: 20px;
     border: 1px solid #ccc;
     border-radius: 5px;

@@ -4,7 +4,7 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
 import { userContext } from "../userState/StateComponent";
-import useDarkMode from "../hooks/useDarkMode"; // Importa el hook de modo oscuro
+import useDarkMode from "../hooks/useDarkMode"; 
 
 const Login = () => {
   const [show, setShow] = useState(false);
@@ -13,7 +13,7 @@ const Login = () => {
 
   const { setEmailSesion, setPasswordSesion, handleLogin } =
     useContext(userContext);
-  const [isDarkMode] = useDarkMode(); // Obtén el estado del modo oscuro
+  const [isDarkMode] = useDarkMode(); 
 
   return (
     <>

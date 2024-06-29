@@ -18,7 +18,6 @@ import AdminLogic from "./components/adminItems/AdminLogic";
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Orders from "./components/orders/Orders";
-//import ItemDetailContainer from "./components/itemDetail/ItemDetailConteiner";
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom"
 import { useContext, useEffect } from "react";
 import { userContext } from "../userState/StateComponent";
 
-// eslint-disable-next-line react/prop-types
 const PrivateRoute = ({ children, redirectTo = "/" }) => {
 
     const { userData } = useContext(userContext);

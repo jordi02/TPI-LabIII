@@ -3,7 +3,7 @@ import { CartContext } from "../CartContext";
 import { userContext } from "../userState/StateComponent";
 import { useNavigate } from "react-router-dom";
 import Login from "../login/Login";
-import "./Cart.css"; // Importar el archivo CSS
+import "./Cart.css"; 
 
 const Cart = () => {
   const [totalPrice, setTotalPrice] = useState(0);

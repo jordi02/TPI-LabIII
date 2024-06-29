@@ -3,11 +3,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
 import PropTypes from "prop-types";
-import useDarkMode from "../hooks/useDarkMode"; // Importa el hook de modo oscuro
+import useDarkMode from "../hooks/useDarkMode"; 
 import "./Item.css";
 
 const Item = ({ items }) => {
-  const [isDarkMode] = useDarkMode(); // Obtén el estado del modo oscuro
+  const [isDarkMode] = useDarkMode(); 
 
   return (
     <div className="container">

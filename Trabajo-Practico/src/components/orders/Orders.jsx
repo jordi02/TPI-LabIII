@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { userContext } from "../userState/StateComponent";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
-import "./Orders.css"; // Importar el archivo CSS
+import "./Orders.css"; 
 
 const Orders = () => {
   const { userData } = useContext(userContext);

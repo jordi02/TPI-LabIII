@@ -11,7 +11,7 @@ import { userContext } from "../userState/StateComponent";
 import useDarkMode from "../hooks/useDarkMode";
 import SunIcon from "../../assets/navbar/sun.png";
 import MoonIcon from "../../assets/navbar/moon.png";
-import "./NavBar.css"; // Importa el archivo CSS
+import "./NavBar.css"; 
 
 function NavBar() {
   const { userData, usuario, logout } = useContext(userContext);
@@ -24,7 +24,7 @@ function NavBar() {
 
   const handleLogout = () => {
     logout();
-    navigate("/"); // Redirigir a la página principal
+    navigate("/"); 
   };
 
   return (

@@ -1,4 +1,3 @@
-// src/hooks/useDarkMode.js
 import { useState, useEffect } from "react";
 
 const useDarkMode = () => {
@@ -16,7 +15,7 @@ const useDarkMode = () => {
     setIsDarkMode((prevMode) => !prevMode);
     setTimeout(() => {
       window.location.reload();
-    }, 100); // Añade un pequeño retraso para asegurarte de que el estado se guarda antes de recargar
+    }, 100);
   };
 
   return [isDarkMode, toggleDarkMode];
