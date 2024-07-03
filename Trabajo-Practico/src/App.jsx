@@ -18,6 +18,7 @@ import AdminLogic from "./components/adminItems/AdminLogic";
 import SuperAdmin from "./components/superAdmin/SuperAdmin";
 import PrivateRoute from "./components/privateRoute/PrivateRoute";
 import Orders from "./components/orders/Orders";
+import NotFound from "./components/notFound/NotFound";
 // Estilos Toastify
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -41,6 +42,7 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
+              <Route path="*" element={<NotFound />} />
               <Route path="/AdminLogic" element={<PrivateRoute><AdminLogic /></PrivateRoute>}/>
               <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>}/>
               <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>}/>
