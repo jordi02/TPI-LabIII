@@ -1,5 +1,4 @@
-// Orders.jsx
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { userContext } from "../userState/StateComponent";
 import { getFirestore, collection, query, where, getDocs } from "firebase/firestore";
 import "./Orders.css"; 

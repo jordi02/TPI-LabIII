@@ -12,8 +12,10 @@ import {
 
 export const CartContext = createContext();
 
+// eslint-disable-next-line react/prop-types
 const CartProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
+
 
   const sendOrder = async (totalPrice, buyerData) => {
     const db = getFirestore();
@@ -44,10 +46,10 @@ const CartProvider = ({ children }) => {
     if (withoutStock.length === 0) {
       const addResponse = await addDoc(orderCollection, order);
       batch.commit();
-      alert(`Your order number is: ${addResponse.id}`);
+      alert(`Muchas gracias por confiar en nosotros! Su orden de compra: ${addResponse.id}`);
     } else {
       alert(
-        "The purchase wasn't completed. There aren't enough items in stock"
+        "La compra no se completó. No hay suficientes artículos en stock de alguno de los productos selecionados. Disculpe las molestias."
       );
     }
   };

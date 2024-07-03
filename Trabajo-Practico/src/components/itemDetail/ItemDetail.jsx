@@ -1,7 +1,9 @@
 import { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
 import { CartContext } from "../CartContext";
+import { toast } from "react-toastify";
 import "./ItemDetail.css";
 
 const ItemDetail = () => {
@@ -9,6 +11,7 @@ const ItemDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const { id } = useParams();
   const { addItem } = useContext(CartContext);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const db = getFirestore();
@@ -32,6 +35,10 @@ const ItemDetail = () => {
 
   const handleAddToCart = () => {
     addItem(item, quantity);
+    toast.success("Producto agregado exitosamente!", {
+      position: "top-center",
+    });
+    navigate("/");
   };
 
   return (

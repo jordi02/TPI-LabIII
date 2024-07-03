@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import Item from "../item/Item";
 import Siete from "../../assets/itemListContainer/7.jpg";
 import Ocho from "../../assets/itemListContainer/8.jpg";
@@ -19,7 +19,7 @@ const ItemListContainer = () => {
     getDocs(itemsCollection).then((snapshot) => {
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setItems(data);
-      setFilteredItems(data); // Inicialmente mostrar todos los items
+      setFilteredItems(data); // Inicialmente va a mostrar todos los items
     });
   }, []);
 

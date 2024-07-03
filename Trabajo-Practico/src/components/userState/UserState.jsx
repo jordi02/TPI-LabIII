@@ -5,6 +5,7 @@ import { auth, db } from "../../credenciales";
 import { setDoc, getDoc, doc } from "firebase/firestore";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword, getAuth } from "firebase/auth";
 
+// eslint-disable-next-line react/prop-types
 const UserState = ({ children }) => {
 
   // Registro de usuario
@@ -71,7 +72,6 @@ const UserState = ({ children }) => {
       console.log("El usuario se registró existosamente!");
       toast.success("Sesión iniciada exitosamente", {
         position: "top-center",
-
       });
 
       if (usuarioSesion) {
@@ -140,6 +140,9 @@ const UserState = ({ children }) => {
         setUsuario(null);
         setUserData(null);
         localStorage.removeItem("userData");
+        toast.success("Sesión finalizada exitosamente", {
+          position: "top-center",
+        });
       })
       .catch(error => {
         console.error("Error al cerrar sesión: ", error);

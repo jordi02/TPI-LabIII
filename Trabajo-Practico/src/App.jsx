@@ -41,30 +41,9 @@ function App() {
               <Route path="/register" element={<Register />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/orders" element={<Orders />} />
-              <Route
-                path="/AdminLogic"
-                element={
-                  <PrivateRoute>
-                    <AdminLogic />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/edit/:id"
-                element={
-                  <PrivateRoute>
-                    <AdminLogic />
-                  </PrivateRoute>
-                }
-              />
-              <Route
-                path="/SuperAdmin"
-                element={
-                  <PrivateRoute>
-                    <SuperAdmin />
-                  </PrivateRoute>
-                }
-              />
+              <Route path="/AdminLogic" element={<PrivateRoute><AdminLogic /></PrivateRoute>}/>
+              <Route path="/edit/:id" element={<PrivateRoute><AdminLogic /></PrivateRoute>}/>
+              <Route path="/SuperAdmin" element={<PrivateRoute><SuperAdmin /></PrivateRoute>}/>
             </Routes>
           </main>
           <ToastContainer />

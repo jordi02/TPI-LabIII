@@ -1,6 +1,6 @@
 import { useContext, useState } from "react";
 import { userContext } from "../userState/StateComponent";
-import { doc, deleteDoc, getDocs, query, where, collection, updateDoc } from "firebase/firestore";
+import { deleteDoc, getDocs, query, where, collection, updateDoc } from "firebase/firestore";
 import { db } from "../../credenciales"; 
 
 const SuperAdmin = () => {
@@ -156,9 +156,6 @@ const SuperAdmin = () => {
               Registrar
             </button>
           </div>
-          <p className="forgot-password text-right">
-            Si ya estás registrado <a href="/">Inicia sesión</a>
-          </p>
         </form>
       )}
 

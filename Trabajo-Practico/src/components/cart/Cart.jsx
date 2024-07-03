@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../CartContext";
 import { userContext } from "../userState/StateComponent";
-import { useNavigate } from "react-router-dom";
 import Login from "../login/Login";
 import "./Cart.css"; 
 
@@ -25,6 +25,7 @@ const Cart = () => {
       name: userData?.firstName,
       email: userData?.email,
     });
+    navigate("/");
   };
 
   return (

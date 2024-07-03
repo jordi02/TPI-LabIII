@@ -1,21 +1,17 @@
-// AdminLogic.js
 import { useState, useEffect } from "react";
 import { useNavigate } from 'react-router-dom';
-//import AdminItemList from "./AdminItemList";
 import ItemAdmin from "./ItemAdmin";
 import { getFirestore, collection, getDocs, doc, deleteDoc, updateDoc, addDoc } from "firebase/firestore";
 
 const AdminLogic = () => {
 
-  const navigate = useNavigate(); // Obtén la función navigate
+  const navigate = useNavigate();
 
   //Lista con los items
   const [items, setItems] = useState([]);
-  //const [loading, setLoading] = useState(true);
 
   //Trae los productos
   useEffect(() => {
-    //setLoading(true);
     const db = getFirestore();
     const itemsCollection = collection(db, "Products");
 
@@ -23,10 +19,8 @@ const AdminLogic = () => {
       const data = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
       setItems(data);
       console.log(data);
-      //setLoading(false);
     }).catch(error => {
       console.error("Error fetching documents: ", error);
-      //setLoading(false);
     });
   }, []);
 

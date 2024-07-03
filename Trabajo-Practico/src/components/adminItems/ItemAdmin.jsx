@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import PropTypes from 'prop-types';
 import "./ItemAdmin.css";
 
+
 const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddChange, handleAddProduct, handleDelete, handleEdit, handleChange, handleSave, editItem, setEditItem, editValues }) => {
 
   return (
@@ -141,8 +142,39 @@ const ItemAdmin = ({ items, showAddForm, setShowAddForm, newProduct, handleAddCh
 };
 
 ItemAdmin.propTypes = {
-  items: PropTypes.array.isRequired,
-  handleDelete: PropTypes.func.isRequired
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      pictureUrl: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      stock: PropTypes.number.isRequired
+    })
+  ).isRequired,
+  showAddForm: PropTypes.bool.isRequired,
+  setShowAddForm: PropTypes.func.isRequired,
+  newProduct: PropTypes.shape({
+    title: PropTypes.string,
+    pictureUrl: PropTypes.string,
+    price: PropTypes.number,
+    detail: PropTypes.string,
+    stock: PropTypes.number,
+    category: PropTypes.string
+  }).isRequired,
+  handleAddChange: PropTypes.func.isRequired,
+  handleAddProduct: PropTypes.func.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+  handleEdit: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired,
+  handleSave: PropTypes.func.isRequired,
+  editItem: PropTypes.string,
+  setEditItem: PropTypes.func.isRequired,
+  editValues: PropTypes.shape({
+    title: PropTypes.string,
+    pictureUrl: PropTypes.string,
+    price: PropTypes.number,
+    stock: PropTypes.number
+  }).isRequired
 };
 
 export default ItemAdmin;

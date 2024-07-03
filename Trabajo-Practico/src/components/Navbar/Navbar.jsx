@@ -1,5 +1,5 @@
 // src/components/navbar/NavBar.jsx
-import React, { useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { Outlet, useNavigate, Link } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
